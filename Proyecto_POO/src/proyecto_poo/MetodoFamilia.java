@@ -11,12 +11,8 @@ import java.util.ArrayList;
  *
  * @author josue
  */
-public class ClaseSocial {
-    private float totalidad;
-    private ArrayList tipoClase; 
-    
-    
-    
-    
+public class MetodoFamilia {
+    private ArrayList<Familia> Familias;
+    private ArrayList<Persona> Miembro;
     
 }
