@@ -27,6 +27,10 @@ public class Familia {
         this.canton = canton;
         this.distrito = distrito;
     }
+
+    
+
+    
     
     public void anadeFamiliar(String nombre, int id, int edad, String trabajo, String genero, String gradoEscolaridad){
         Persona miembroFamilia = new Persona(nombre, id, edad, trabajo, genero, gradoEscolaridad);

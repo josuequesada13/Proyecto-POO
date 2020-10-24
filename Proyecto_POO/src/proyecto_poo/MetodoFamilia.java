@@ -13,6 +13,6 @@ import java.util.ArrayList;
  */
 public class MetodoFamilia {
     private ArrayList<Familia> Familias;
-    private ArrayList<Persona> Miembro;
     
-}
+    
+    }
