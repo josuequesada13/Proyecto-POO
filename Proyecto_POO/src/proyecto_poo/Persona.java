@@ -22,6 +22,7 @@ public class Persona {
     private double totalIngresos;
     private ArrayList<Egreso> egresos;
     private ArrayList<Ingreso> ingresos;
+    private Familia familia;
 
     public Persona(String nombre, int id, int edad, String trabajo, String genero, String gradoEscolaridad) {
         this.nombre = nombre;
@@ -37,13 +38,17 @@ public class Persona {
     public void anadirEgreso(String clasificacion, double monto, String descripcion){
         Egreso nuevoEgreso = new Egreso(clasificacion, monto, descripcion);
         this.egresos.add(nuevoEgreso);
-        this.totalEgresos += monto;    
+        this.totalEgresos += monto;
+        this.familia.anadeTotalEgresos(monto);
+        this.familia.getListaGastos().add(nuevoEgreso);
     }
     
     public void anadirIngreso(String nombre, double monto, String descripcion){
         Ingreso nuevoIngreso = new Ingreso(nombre, monto, descripcion);
         this.ingresos.add(nuevoIngreso);
         this.totalIngresos += monto;
+        this.familia.anadeTotalIngresos(monto);
+        this.familia.getListaIngresos().add(nuevoIngreso);
     }
 
     public String getNombre() {
@@ -69,8 +74,25 @@ public class Persona {
     public String getGradoEscolaridad() {
         return gradoEscolaridad;
     }
-    
-    
-    
+
+    public double getTotalEgresos() {
+        return totalEgresos;
+    }
+
+    public double getTotalIngresos() {
+        return totalIngresos;
+    }
+
+    public ArrayList<Egreso> getEgresos() {
+        return egresos;
+    }
+
+    public ArrayList<Ingreso> getIngresos() {
+        return ingresos;
+    }
+
+    public void setFamilia(Familia familia) {
+        this.familia = familia;
+    }
     
 }

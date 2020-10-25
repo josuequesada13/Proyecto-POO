@@ -20,6 +20,8 @@ public class Familia {
     private double totalEgresos;
     private double totalIngresos;
     private ArrayList<Persona> miembrosFamilia; 
+    private ArrayList<Egreso> listaGastos;
+    private ArrayList<Ingreso> listaIngresos;
      
     public Familia(String apellidosFamiliar, String provincia, String canton, String distrito) {
         this.apellidosFamilia = apellidosFamiliar;
@@ -27,15 +29,34 @@ public class Familia {
         this.canton = canton;
         this.distrito = distrito;
     }
-
-    
-
-    
     
     public void anadeFamiliar(String nombre, int id, int edad, String trabajo, String genero, String gradoEscolaridad){
         Persona miembroFamilia = new Persona(nombre, id, edad, trabajo, genero, gradoEscolaridad);
+        miembroFamilia.setFamilia(this);
         this.miembrosFamilia.add(miembroFamilia);
     }
+    
+    /*public void anadeEgresos(){
+        for(Persona p: miembrosFamilia){
+            if(!p.getEgresos().isEmpty()){
+                for(Egreso e: p.getEgresos()){
+                    listaGastos.add(e);
+                    totalEgresos += e.getMonto();
+                }
+            }
+        }
+    }
+    
+    public void anadeIngresos(){
+        for(Persona p: miembrosFamilia){
+            if(!p.getIngresos().isEmpty()){
+                for(Ingreso i: p.getIngresos()){
+                    listaIngresos.add(i);
+                    totalIngresos += i.getMonto();
+                }
+            }
+        }
+    }*/
 
     public String getApellidosFamilia() {
         return apellidosFamilia;
@@ -64,7 +85,22 @@ public class Familia {
     public ArrayList<Persona> getMiembrosFamilia() {
         return miembrosFamilia;
     }
-    
+
+    public ArrayList<Egreso> getListaGastos() {
+        return listaGastos;
+    }
+
+    public ArrayList<Ingreso> getListaIngresos() {
+        return listaIngresos;
+    }
+
+    public void anadeTotalEgresos(double totalEgresos) {
+        this.totalEgresos += totalEgresos;
+    }
+
+    public void anadeTotalIngresos(double totalIngresos) {
+        this.totalIngresos += totalIngresos;
+    }
     
     
 }
