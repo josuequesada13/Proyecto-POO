@@ -15,7 +15,7 @@ public class Persona {
     private String nombre;
     private int id;
     private int edad;
-    private String trabajo; // si tiene varios trabajos?
+    private ArrayList<String> trabajos;
     private String genero;
     private String gradoEscolaridad;
     private double totalEgresos;
@@ -28,11 +28,14 @@ public class Persona {
         this.nombre = nombre;
         this.id = id;
         this.edad = edad;
-        this.trabajo = trabajo;
+        this.trabajos.add(trabajo);
         this.genero = genero;
         this.gradoEscolaridad = gradoEscolaridad;
         this.totalEgresos = 0;
         this.totalIngresos = 0;
+        this.trabajos = new ArrayList<>();
+        this.egresos = new ArrayList<>();
+        this.ingresos = new ArrayList<>();
     }
     
     public void anadirEgreso(String clasificacion, double monto, String descripcion){
@@ -63,10 +66,6 @@ public class Persona {
         return edad;
     }
 
-    public String getTrabajo() {
-        return trabajo;
-    }
-
     public String getGenero() {
         return genero;
     }
@@ -82,6 +81,10 @@ public class Persona {
     public double getTotalIngresos() {
         return totalIngresos;
     }
+    
+    public ArrayList<String> getTrabajos(){
+        return trabajos;
+    }
 
     public ArrayList<Egreso> getEgresos() {
         return egresos;
@@ -93,6 +96,10 @@ public class Persona {
 
     public void setFamilia(Familia familia) {
         this.familia = familia;
+    }
+    
+    public void anadeTrabajo(String trabajo){
+        this.trabajos.add(trabajo);
     }
     
 }

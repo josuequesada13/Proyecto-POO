@@ -6,6 +6,7 @@
 package proyecto_poo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -14,8 +15,20 @@ import java.util.ArrayList;
 public class MetodoFamilia {
     private ArrayList<Familia> Familias;
     
+    public MetodoFamilia(){
+        this.Familias = new ArrayList<>();
+    }
+    
     public void anadeFamilia(Familia familia){
         this.Familias.add(familia);
+    }
+    
+    public ArrayList<Familia> getFamilias(){
+        return Familias;
+    }
+    
+    public void setFamilias(ArrayList a){
+        this.Familias = a;
     }
     
     /*
@@ -43,7 +56,7 @@ public class MetodoFamilia {
             }
         }
         return "La cantidad de familias es: " + cantidad + "\nEl total de familias por clasificacion es de:\n"
-                + "Clase Alta: " + claseAlta/cantidad * 100 + "\nClase Media Alta: " + claseMedia/cantidad * 100
+                + "Clase Alta: " + claseAlta/cantidad * 100 + "\nClase Media Alta: " + claseMediaAlta/cantidad * 100
                 + "\nClase Media Baja: " + claseMedia/cantidad * 100 + "\nClase Baja Superior: " + claseBajaSuperior/cantidad * 100
                 + "\nClase Baja: " + claseBaja/cantidad * 100;
     }
@@ -56,7 +69,7 @@ public class MetodoFamilia {
     /*
     Reporte 3, calcula el porcentaje de familias que solo gastan en fisiologia y seguridad
     */
-    public String reporteTres(){
+   public String ingresosFisiologiaSeguridad(){
         int cantidad = Familias.size();
         int porcentaje = 0;
         for(Familia f: Familias){
@@ -72,13 +85,49 @@ public class MetodoFamilia {
     }
     
     /*
-    Reporte 4 
+    Reporte 4 calcula cuantas familias de las registradas gastan igual o más de un 10% 
+    de sus ingresos en actividades de autorrealización (ultimo nivel).
     */
-    public String reporteCuatro(){
-        int cantidad = 0;
+    public String ingresosAutorrealizacion(){
+        double cantidad = 0;
         for(Familia f: Familias){
-            
+            double ingreso = f.getTotalIngresos();
+            double gasto = 0;
+            for(Egreso e: f.getListaGastos()){
+                if(e.getClasificacion() == "Autorrealizacion"){
+                    gasto += e.getMonto();
+                }
+            }
+            if(gasto >= ingreso*0.1){
+                cantidad += 1;
+            }
         }
+        return "En total " + cantidad + " gastan mas de un 10 % de sus ingresos en Autorealizacion";
+    }
+    
+    /*
+    Reporte 5 grado de escolaridad (individual no familiar) que más ahorra
+    */
+    public String reporteCinco(){
+        
         return "";
     }
+    
+    /*
+    Reporte 6, Listar en orden de mayor a menor las familias
+    */
+    public ArrayList ordenIngresos(){
+        Collections.sort(Familias, Familia.IngresosComparator);
+        return Familias;
+    }
+    
+    /*
+    Reporte 7, Listar familias en orden por cantidad de ahorros
+    */
+    public ArrayList ordenAhorros(){
+        Collections.sort(Familias, Familia.AhorrosComparator);
+        return Familias;
+    }
+    
+    
 }
