@@ -62,9 +62,13 @@ public class MetodoFamilia {
     }
     
     /*
-    Reporte 2, 
+    Reporte 2, calcula cual clase social tiene mayor capacidad de ahorro de acuerdo a su grado
+    de escolaridad
     */
-    
+    public String capacidadAhorro(){
+        
+        return "";
+    }
     
     /*
     Reporte 3, calcula el porcentaje de familias que solo gastan en fisiologia y seguridad
@@ -129,5 +133,14 @@ public class MetodoFamilia {
         return Familias;
     }
     
+    /*
+    Reporte 8, listar las familias que a final de agno quedaron sin ahorros
+    */
+    public ArrayList reporteOcho(){
+        for(Familia f: Familias){
+            
+        }
+        return Familias;
+    }
     
 }

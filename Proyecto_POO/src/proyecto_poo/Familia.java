@@ -18,9 +18,9 @@ public class Familia{
     private String provincia ;
     private String canton;
     private String distrito;
+    private String claseSocial;
     private double totalEgresos;
     private double totalIngresos;
-    //private double ahorro = totalIngresos - totalEgresos;
     private ArrayList<Persona> miembrosFamilia; 
     private ArrayList<Egreso> listaGastos;
     private ArrayList<Ingreso> listaIngresos;
@@ -48,6 +48,28 @@ public class Familia{
         miembroFamilia.setFamilia(this);
         this.miembrosFamilia.add(miembroFamilia);
     }
+    
+    public void calculaClase(){
+        
+    }
+    
+    public static Comparator<Familia> IngresosComparator = new Comparator<Familia>() {
+        @Override
+        public int compare(Familia t, Familia t1) {
+           int f1 = (int)t.getTotalIngresos();
+	   int f2 = (int)t1.getTotalIngresos();
+	   return f2-f1;
+        }
+    };
+    
+    public static Comparator<Familia> AhorrosComparator = new Comparator<Familia>() {
+        @Override
+        public int compare(Familia t, Familia t1) {
+           int f1 = (int)(t.getTotalIngresos()-t.getTotalEgresos());
+	   int f2 = (int)(t1.getTotalIngresos()-t1.getTotalEgresos());
+	   return f2-f1;
+        }
+    };
     
     /*public void anadeEgresos(){
         for(Persona p: miembrosFamilia){
@@ -86,6 +108,10 @@ public class Familia{
     public String getDistrito() {
         return distrito;
     }
+    
+    public String getClaseSocial(){
+        return claseSocial;
+    }
 
     public double getTotalEgresos() {
         return totalEgresos;
@@ -114,30 +140,10 @@ public class Familia{
     public void anadeTotalIngresos(double totalIngresos) {
         this.totalIngresos += totalIngresos;
     }
-
-    /*@Override
-    public int compareTo(Object t) {
-        int compara=(int)((Familia)t).getTotalIngresos();
-        return compara-(int)this.totalIngresos; //To change body of generated methods, choose Tools | Templates.
-    }*/
     
-    public static Comparator<Familia> IngresosComparator = new Comparator<Familia>() {
-        @Override
-        public int compare(Familia t, Familia t1) {
-           int f1 = (int)t.getTotalIngresos();
-	   int f2 = (int)t1.getTotalIngresos();
-	   return f2-f1;
-        }
-    };
-    
-    public static Comparator<Familia> AhorrosComparator = new Comparator<Familia>() {
-        @Override
-        public int compare(Familia t, Familia t1) {
-           int f1 = (int)(t.getTotalIngresos()-t.getTotalEgresos());
-	   int f2 = (int)(t1.getTotalIngresos()-t1.getTotalEgresos());
-	   return f2-f1;
-        }
-    };
+    public void setClaseSocial(String clase){
+        this.claseSocial = clase;
+    }
     
     
     
