@@ -50,7 +50,17 @@ public class Familia{
     }
     
     public void calculaClase(){
-        
+        if(totalIngresos <= 250000){ //clase baja
+            claseSocial = "Clase Baja";
+        }if(totalIngresos > 250000 && totalIngresos < 350000){//clase baja superior
+            claseSocial = "Clase Baja Superior";
+        }if(totalIngresos > 350000 && totalIngresos < 500000){// clase media 
+            claseSocial = "Clase Media";
+        }if(totalIngresos > 500000 && totalIngresos < 1000000){// clase media alta 
+            claseSocial = "Clase Media Alta";
+        }if(totalIngresos > 1000000){ // clase alta 
+            claseSocial = "Clase Alta";
+        }
     }
     
     public static Comparator<Familia> IngresosComparator = new Comparator<Familia>() {

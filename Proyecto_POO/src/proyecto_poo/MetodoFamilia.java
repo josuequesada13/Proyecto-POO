@@ -62,10 +62,13 @@ public class MetodoFamilia {
     }
     
     /*
-    Reporte 2, calcula cual clase social tiene mayor capacidad de ahorro de acuerdo a su grado
-    de escolaridad
+    Reporte 2, calcula cual clase social tiene mayor capacidad de ahorro de acuerdo a sus
+    ingresos
     */
     public String capacidadAhorro(){
+        int ahorroBaja, ahorroBajaSuperior, ahorroMedia, ahorroMediaAlta, ahorroAlta = 0;
+        
+        
         
         return "";
     }
@@ -111,9 +114,35 @@ public class MetodoFamilia {
     
     /*
     Reporte 5 grado de escolaridad (individual no familiar) que más ahorra
+    
+    Si. Suma todos los ahorros de todas las personas de primaria. Y así para todos los niveles de escolaridad.
+    Para determinar ahorra más nominalmente
     */
     public String reporteCinco(){
-        
+        double ahorroPrimaria = 0, ahorroSecundaria = 0, ahorroDiversificada = 0, ahorroUniversitaria = 0;
+        for(Familia f: Familias){
+            if(!f.getMiembrosFamilia().isEmpty()){
+                for(Persona p: f.getMiembrosFamilia()){
+                    if(p.getGradoEscolaridad() == "Primaria"){
+                        ahorroPrimaria += (p.getTotalIngresos() - p.getTotalEgresos());
+                    }if(p.getGradoEscolaridad() == "Secundaria"){
+                        ahorroSecundaria += (p.getTotalIngresos() - p.getTotalEgresos());
+                    }if(p.getGradoEscolaridad() == "Diversificada"){
+                        ahorroDiversificada += (p.getTotalIngresos() - p.getTotalEgresos());
+                    }if(p.getGradoEscolaridad() == "Universitaria"){
+                        ahorroUniversitaria += (p.getTotalIngresos() - p.getTotalEgresos());
+                    }
+                }
+            }
+            
+        }
+        double[] array = {ahorroPrimaria, ahorroSecundaria, ahorroDiversificada, ahorroUniversitaria};
+        double i = 0;
+        for(int x = 0; x < 4; x++){
+            if(array[x] >= i){
+                i = array[x];
+            }
+        }
         return "";
     }
     
@@ -135,12 +164,15 @@ public class MetodoFamilia {
     
     /*
     Reporte 8, listar las familias que a final de agno quedaron sin ahorros
-    */
-    public ArrayList reporteOcho(){
+    
+    public ArrayList ListarSinAhorros(){
+        int cantidad = Familias.size();
         for(Familia f: Familias){
-            
-        }
-        return Familias;
-    }
+        double Comparator<Familia> = f.AhorrosComparator;
+            if (Comparator<Familia> != 0){ //poseen ahorros
+                Familias.remove(Familias f)
+            }
+            return Familias;
+        }*/
     
 }
