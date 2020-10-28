@@ -24,6 +24,9 @@ public class Proyecto_POO {
         aa.anadeFamilia(new Familia("x","cc","ss","sa", 4545, 1000));
         aa.anadeFamilia(new Familia("a","cc","ss","sa", 455, 300));
         
+        //CrearFamilia2 aaa = new CrearFamilia2();
+        //aaa.setVisible(true);
+        
         
         //Collections.sort(aa.getFamilias());
         aa.ordenIngresos();
