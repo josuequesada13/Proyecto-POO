@@ -43,7 +43,7 @@ public class Persona {
         this.egresos.add(nuevoEgreso);
         this.totalEgresos += monto;
         this.familia.anadeTotalEgresos(monto);
-        this.familia.getListaGastos().add(nuevoEgreso);
+        this.familia.anadeEgresos(nuevoEgreso);
     }
     
     public void anadirIngreso(String nombre, double monto, String descripcion){
@@ -51,7 +51,7 @@ public class Persona {
         this.ingresos.add(nuevoIngreso);
         this.totalIngresos += monto;
         this.familia.anadeTotalIngresos(monto);
-        this.familia.getListaIngresos().add(nuevoIngreso);
+        this.familia.anadeIngreso(nuevoIngreso);
     }
 
     public String getNombre() {

@@ -31,6 +31,16 @@ public class MetodoFamilia {
         this.Familias = a;
     }
     
+    public double mayorArray(double[] a){
+        double i = 0;
+        for(int x = 0; x < a.length; x++){
+            if(a[x] >= i){
+                i = a[x];
+            }
+        }
+        return i;
+    }
+    
     /*
     Reporte 1, separa las familias y las clasifica de acuerdo a sus ingresos
     */
@@ -66,13 +76,116 @@ public class MetodoFamilia {
     ingresos
     */
     public String capacidadAhorro(){
-        int ahorroBaja, ahorroBajaSuperior, ahorroMedia, ahorroMediaAlta, ahorroAlta = 0;
-        
-        
-        
-        return "";
+        int mayorPorcentaje = 0;
+        String clase = "";
+        ClaseSocial baja = new ClaseSocial("Clase Baja");
+        ClaseSocial bajaSup = new ClaseSocial("Clase Baja Superior");
+        ClaseSocial media = new ClaseSocial("Clase Media");
+        ClaseSocial mediaAlta = new ClaseSocial("Clase Media Alta");
+        ClaseSocial alta = new ClaseSocial("Clase Alta");
+        for(Familia f: Familias){
+            switch(f.getClaseSocial()){
+                case "Clase Baja":
+                    baja.sumaIngresos(f.getTotalIngresos());
+                    baja.sumaAhorros(f.getTotalIngresos()-f.getTotalEgresos());
+                    break;
+                case "Clase Baja Superior":
+                    bajaSup.sumaIngresos(f.getTotalIngresos());
+                    bajaSup.sumaAhorros(f.getTotalIngresos()-f.getTotalEgresos());
+                    break;
+                case "Clase Media":
+                    media.sumaIngresos(f.getTotalIngresos());
+                    media.sumaAhorros(f.getTotalIngresos()-f.getTotalEgresos());
+                    break;
+                case "Clase Media Alta":
+                    mediaAlta.sumaIngresos(f.getTotalIngresos());
+                    mediaAlta.sumaAhorros(f.getTotalIngresos()-f.getTotalEgresos());
+                    break;
+                case "Clase Alta":
+                    alta.sumaIngresos(f.getTotalIngresos());
+                    alta.sumaAhorros(f.getTotalIngresos()-f.getTotalEgresos());
+                    break;
+            }   
+        }
+        ClaseSocial[] array = {baja, bajaSup, media, mediaAlta, alta};
+        for(ClaseSocial cs: array){
+            if((int)(cs.getAhorros() - cs.getIngresos() * 100) > mayorPorcentaje){
+                mayorPorcentaje = (int)(cs.getAhorros()-cs.getIngresos()*100);
+                clase = cs.getNombre();
+            }
+        }
+        return "La " + clase + " en promedio, tiene capacidad de ahorrar un " + mayorPorcentaje +
+                "% de sus ingresos.";
     }
-    
+        /*
+        for(Familia f: Familias){
+            double ingresos = f.getTotalIngresos();
+            double ahorro = f.getTotalIngresos() - f.getTotalEgresos();
+            switch(f.getClaseSocial()){
+                case "Clase Baja":
+                    if((ahorro/ingresos*100) > mayorPorcentaje)
+                        mayorPorcentaje = ahorro/ingresos*100;
+                        clase = "Clase Baja";
+                    break;
+                case "Clase Baja Superior":
+                    if((ahorro/ingresos*100) > mayorPorcentaje)
+                        mayorPorcentaje = ahorro/ingresos*100;
+                        clase = "Clase Baja Superior";
+                    break;
+                case "Clase Media":
+                    if((ahorro/ingresos*100) > mayorPorcentaje)
+                        mayorPorcentaje = ahorro/ingresos*100;
+                        clase = "Clase Media";
+                    break;
+                case "Clase Media Alta":
+                    if((ahorro/ingresos*100) > mayorPorcentaje)
+                        mayorPorcentaje = ahorro/ingresos*100;
+                        clase = "Clase Media Alta";
+                    break;
+                case "Clase Alta":
+                    if((ahorro/ingresos*100) > mayorPorcentaje)
+                        mayorPorcentaje = ahorro/ingresos*100;
+                        clase = "Clase Alta";
+                    break;
+            }   
+        }
+        
+        return "La " + clase + " es la que ";
+        
+        
+        double ahorroBaja = 0, ahorroBajaSuperior = 0, ahorroMedia = 0, ahorroMediaAlta = 0,
+                ahorroAlta = 0;
+        double ingTotalBaja = 0, ingTotalBajaSup = 0, ingTotalMedia = 0, ingTotalMediaAlta = 0,
+                ingTotalAlta = 0;
+        for(Familia f: Familias){
+            switch(f.getClaseSocial()){
+                case "Clase Baja": 
+                    ahorroBaja += (f.getTotalIngresos() - f.getTotalEgresos());
+                    ingTotalBaja += f.getTotalIngresos();
+                    break;
+                case "Clase Baja Superior":
+                    ahorroBajaSuperior += (f.getTotalIngresos() - f.getTotalEgresos());
+                    ingTotalBajaSup += f.getTotalIngresos();
+                    break;
+                case "Clase Media":
+                    ahorroMedia += (f.getTotalIngresos() - f.getTotalEgresos());
+                    ingTotalMedia += f.getTotalIngresos();
+                    break;
+                case "Clase Media Alta":
+                    ahorroMediaAlta += (f.getTotalIngresos() - f.getTotalEgresos());
+                    ingTotalMediaAlta += f.getTotalIngresos();
+                    break;
+                case "Clase Alta":
+                    ahorroAlta += (f.getTotalIngresos() - f.getTotalEgresos());
+                    ingTotalAlta += f.getTotalIngresos();
+                    break;
+            }
+        }
+        double[] ahorros = {ahorroBaja, ahorroBajaSuperior, ahorroMedia, ahorroMediaAlta, ahorroAlta};
+        double mayorAhorro = mayorArray(ahorros);
+        double[] totalesIngresos = {ingTotalBaja, ingTotalBajaSup, ingTotalMedia, ingTotalMediaAlta, ingTotalAlta};
+        double mayorTotal = mayorArray(totalesIngresos);*/
+       
     /*
     Reporte 3, calcula el porcentaje de familias que solo gastan en fisiologia y seguridad
     */
@@ -88,7 +201,7 @@ public class MetodoFamilia {
                 }
             }
         }
-        return "El " + (porcentaje/cantidad) * 100 + "% de las familias solo gastan en los dos niveles basicos\n Fisiologia y seguridad";
+        return "El " + ((porcentaje/cantidad) * 100) + "% de las familias solo gastan en los dos niveles basicos\n Fisiologia y seguridad";
     }
     
     /*

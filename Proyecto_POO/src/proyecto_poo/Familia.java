@@ -18,7 +18,7 @@ public class Familia{
     private String provincia ;
     private String canton;
     private String distrito;
-    private String claseSocial;
+    private ClaseSocial claseSocial;
     private double totalEgresos;
     private double totalIngresos;
     private ArrayList<Persona> miembrosFamilia; 
@@ -50,17 +50,19 @@ public class Familia{
     }
     
     public void calculaClase(){
+        String nombreClase = "";
         if(totalIngresos <= 250000){ //clase baja
-            claseSocial = "Clase Baja";
+            nombreClase = "Clase Baja";
         }if(totalIngresos > 250000 && totalIngresos < 350000){//clase baja superior
-            claseSocial = "Clase Baja Superior";
+            nombreClase = "Clase Baja Superior";
         }if(totalIngresos > 350000 && totalIngresos < 500000){// clase media 
-            claseSocial = "Clase Media";
+            nombreClase = "Clase Media";
         }if(totalIngresos > 500000 && totalIngresos < 1000000){// clase media alta 
-            claseSocial = "Clase Media Alta";
+            nombreClase = "Clase Media Alta";
         }if(totalIngresos > 1000000){ // clase alta 
-            claseSocial = "Clase Alta";
+            nombreClase = "Clase Alta";
         }
+        claseSocial = new ClaseSocial(nombreClase);
     }
     
     public static Comparator<Familia> IngresosComparator = new Comparator<Familia>() {
@@ -80,28 +82,6 @@ public class Familia{
 	   return f2-f1;
         }
     };
-    
-    /*public void anadeEgresos(){
-        for(Persona p: miembrosFamilia){
-            if(!p.getEgresos().isEmpty()){
-                for(Egreso e: p.getEgresos()){
-                    listaGastos.add(e);
-                    totalEgresos += e.getMonto();
-                }
-            }
-        }
-    }
-    
-    public void anadeIngresos(){
-        for(Persona p: miembrosFamilia){
-            if(!p.getIngresos().isEmpty()){
-                for(Ingreso i: p.getIngresos()){
-                    listaIngresos.add(i);
-                    totalIngresos += i.getMonto();
-                }
-            }
-        }
-    }*/
 
     public String getApellidosFamilia() {
         return apellidosFamilia;
@@ -120,7 +100,7 @@ public class Familia{
     }
     
     public String getClaseSocial(){
-        return claseSocial;
+        return claseSocial.getNombre();
     }
 
     public double getTotalEgresos() {
@@ -151,10 +131,15 @@ public class Familia{
         this.totalIngresos += totalIngresos;
     }
     
-    public void setClaseSocial(String clase){
-        this.claseSocial = clase;
+    public void anadeEgresos(Egreso e){
+        this.listaGastos.add(e);
     }
     
+    public void anadeIngreso(Ingreso i){
+        this.listaIngresos.add(i);
+    }
     
-    
+    /*public void setClaseSocial(String clase){
+        this.claseSocial = clase;
+    }*/
 }
