@@ -38,6 +38,10 @@ public class Persona {
         this.ingresos = new ArrayList<>();
     }
     
+    public Persona(){
+        
+    }
+    
     public void anadirEgreso(String clasificacion, double monto, String descripcion){
         Egreso nuevoEgreso = new Egreso(clasificacion, monto, descripcion);
         this.egresos.add(nuevoEgreso);

@@ -117,74 +117,6 @@ public class MetodoFamilia {
         return "La " + clase + " en promedio, tiene capacidad de ahorrar un " + mayorPorcentaje +
                 "% de sus ingresos.";
     }
-        /*
-        for(Familia f: Familias){
-            double ingresos = f.getTotalIngresos();
-            double ahorro = f.getTotalIngresos() - f.getTotalEgresos();
-            switch(f.getClaseSocial()){
-                case "Clase Baja":
-                    if((ahorro/ingresos*100) > mayorPorcentaje)
-                        mayorPorcentaje = ahorro/ingresos*100;
-                        clase = "Clase Baja";
-                    break;
-                case "Clase Baja Superior":
-                    if((ahorro/ingresos*100) > mayorPorcentaje)
-                        mayorPorcentaje = ahorro/ingresos*100;
-                        clase = "Clase Baja Superior";
-                    break;
-                case "Clase Media":
-                    if((ahorro/ingresos*100) > mayorPorcentaje)
-                        mayorPorcentaje = ahorro/ingresos*100;
-                        clase = "Clase Media";
-                    break;
-                case "Clase Media Alta":
-                    if((ahorro/ingresos*100) > mayorPorcentaje)
-                        mayorPorcentaje = ahorro/ingresos*100;
-                        clase = "Clase Media Alta";
-                    break;
-                case "Clase Alta":
-                    if((ahorro/ingresos*100) > mayorPorcentaje)
-                        mayorPorcentaje = ahorro/ingresos*100;
-                        clase = "Clase Alta";
-                    break;
-            }   
-        }
-        
-        return "La " + clase + " es la que ";
-        
-        
-        double ahorroBaja = 0, ahorroBajaSuperior = 0, ahorroMedia = 0, ahorroMediaAlta = 0,
-                ahorroAlta = 0;
-        double ingTotalBaja = 0, ingTotalBajaSup = 0, ingTotalMedia = 0, ingTotalMediaAlta = 0,
-                ingTotalAlta = 0;
-        for(Familia f: Familias){
-            switch(f.getClaseSocial()){
-                case "Clase Baja": 
-                    ahorroBaja += (f.getTotalIngresos() - f.getTotalEgresos());
-                    ingTotalBaja += f.getTotalIngresos();
-                    break;
-                case "Clase Baja Superior":
-                    ahorroBajaSuperior += (f.getTotalIngresos() - f.getTotalEgresos());
-                    ingTotalBajaSup += f.getTotalIngresos();
-                    break;
-                case "Clase Media":
-                    ahorroMedia += (f.getTotalIngresos() - f.getTotalEgresos());
-                    ingTotalMedia += f.getTotalIngresos();
-                    break;
-                case "Clase Media Alta":
-                    ahorroMediaAlta += (f.getTotalIngresos() - f.getTotalEgresos());
-                    ingTotalMediaAlta += f.getTotalIngresos();
-                    break;
-                case "Clase Alta":
-                    ahorroAlta += (f.getTotalIngresos() - f.getTotalEgresos());
-                    ingTotalAlta += f.getTotalIngresos();
-                    break;
-            }
-        }
-        double[] ahorros = {ahorroBaja, ahorroBajaSuperior, ahorroMedia, ahorroMediaAlta, ahorroAlta};
-        double mayorAhorro = mayorArray(ahorros);
-        double[] totalesIngresos = {ingTotalBaja, ingTotalBajaSup, ingTotalMedia, ingTotalMediaAlta, ingTotalAlta};
-        double mayorTotal = mayorArray(totalesIngresos);*/
        
     /*
     Reporte 3, calcula el porcentaje de familias que solo gastan en fisiologia y seguridad
@@ -227,9 +159,6 @@ public class MetodoFamilia {
     
     /*
     Reporte 5 grado de escolaridad (individual no familiar) que más ahorra
-    
-    Si. Suma todos los ahorros de todas las personas de primaria. Y así para todos los niveles de escolaridad.
-    Para determinar ahorra más nominalmente
     */
     public String reporteCinco(){
         double ahorroPrimaria = 0, ahorroSecundaria = 0, ahorroDiversificada = 0, ahorroUniversitaria = 0;
@@ -250,13 +179,8 @@ public class MetodoFamilia {
             
         }
         double[] array = {ahorroPrimaria, ahorroSecundaria, ahorroDiversificada, ahorroUniversitaria};
-        double i = 0;
         String result = "";
-        for(int x = 0; x < 4; x++){
-            if(array[x] >= i){
-                i = array[x];
-            }
-        }
+        double i = mayorArray(array);
         if(i == ahorroPrimaria){
             result = "El nivel de escolaridad que mas puede ahorrar es el de Primaria";
         }if(i == ahorroSecundaria){
@@ -285,17 +209,37 @@ public class MetodoFamilia {
         return Familias;
     }
     
+    
     /*
     Reporte 8, listar las familias que a final de agno quedaron sin ahorros
-    
+    */
     public ArrayList ListarSinAhorros(){
-        int cantidad = Familias.size();
+        ArrayList<Familia> sinAhorros = new ArrayList<>();
         for(Familia f: Familias){
-        double Comparator<Familia> = f.AhorrosComparator;
-            if (Comparator<Familia> != 0){ //poseen ahorros
-                Familias.remove(Familias f)
+            if((f.getTotalIngresos() - f.getTotalEgresos()) == 0){
+                sinAhorros.add(f);
             }
-            return Familias;
-        }*/
+        }
+        return sinAhorros;
+    }
+        
+    /*
+    Reporte 9, en que semana la persona x registra mas gastos
     
+    
+    Estos dos reportes se podrian hacer en la misma clase persona para no tener que estar 
+    pariendo pidiendo datos por todo lado
+    */
+    public String personaMasGastos(String nombre){
+        Persona aux = new Persona();
+        for(Familia f: Familias){
+            f.buscarPersona(nombre);
+            
+        }
+        return "";
+    }
+    
+    /*
+    Reporte 10, en que semana la persona x registra mas ingresos
+    */
 }

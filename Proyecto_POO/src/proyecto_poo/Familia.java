@@ -49,6 +49,17 @@ public class Familia{
         this.miembrosFamilia.add(miembroFamilia);
     }
     
+    public Persona buscarPersona(String nombre){
+        Persona aux = new Persona();
+        for(Persona p: miembrosFamilia){
+            if(p.getNombre() == nombre){
+                aux = p;
+                break;
+            }
+        }
+        return aux;
+    }
+    
     public void calculaClase(){
         String nombreClase = "";
         if(totalIngresos <= 250000){ //clase baja
