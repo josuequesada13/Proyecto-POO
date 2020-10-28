@@ -138,12 +138,22 @@ public class MetodoFamilia {
         }
         double[] array = {ahorroPrimaria, ahorroSecundaria, ahorroDiversificada, ahorroUniversitaria};
         double i = 0;
+        String result = "";
         for(int x = 0; x < 4; x++){
             if(array[x] >= i){
                 i = array[x];
             }
         }
-        return "";
+        if(i == ahorroPrimaria){
+            result = "El nivel de escolaridad que mas puede ahorrar es el de Primaria";
+        }if(i == ahorroSecundaria){
+            result = "El nivel de escolaridad que mas puede ahorrar es el de Secundaria";
+        }if(i == ahorroDiversificada){
+            result = "El nivel de escolaridad que mas puede ahorrar es el de Educacion Diversificada";
+        }if(i == ahorroUniversitaria){
+            result = "El nivel de escolaridad que mas puede ahorrar es el de Educacion Universitaria";
+        }
+        return result;
     }
     
     /*

@@ -28,12 +28,12 @@ public class Persona {
         this.nombre = nombre;
         this.id = id;
         this.edad = edad;
+        this.trabajos = new ArrayList<>();
         this.trabajos.add(trabajo);
         this.genero = genero;
         this.gradoEscolaridad = gradoEscolaridad;
         this.totalEgresos = 0;
         this.totalIngresos = 0;
-        this.trabajos = new ArrayList<>();
         this.egresos = new ArrayList<>();
         this.ingresos = new ArrayList<>();
     }
