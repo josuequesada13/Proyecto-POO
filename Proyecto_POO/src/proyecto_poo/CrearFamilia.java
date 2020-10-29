@@ -5,15 +5,20 @@
  */
 package proyecto_poo;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
  
 public class CrearFamilia extends javax.swing.JFrame {
-
+    public MetodoFamilia fam;
+    public Login login;
+    
+       
     /**
      * Creates new form CrearFamilia
      */
     public CrearFamilia() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,21 +36,21 @@ public class CrearFamilia extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextAPELLIDO = new javax.swing.JTextField();
+        jTextApellidos = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextCANTON = new javax.swing.JTextField();
-        jTextPROVINCIA = new javax.swing.JTextField();
-        jTextDISTRITO = new javax.swing.JTextField();
+        jTextCanton = new javax.swing.JTextField();
+        jTextProvincia = new javax.swing.JTextField();
+        jTextDistrito = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        usuarioCrear = new javax.swing.JTextField();
+        jTextUsuario = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextCONTRA = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
-        BTcrear = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnCrear = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
+        jPassword = new javax.swing.JPasswordField();
 
         jTextField2.setText("jTextField2");
 
@@ -63,9 +68,9 @@ public class CrearFamilia extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 52)); // NOI18N
         jLabel4.setText("BANK");
 
-        jTextAPELLIDO.addActionListener(new java.awt.event.ActionListener() {
+        jTextApellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextAPELLIDOActionPerformed(evt);
+                jTextApellidosActionPerformed(evt);
             }
         });
 
@@ -78,64 +83,59 @@ public class CrearFamilia extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel6.setText("Provincia:");
 
-        jTextCANTON.addActionListener(new java.awt.event.ActionListener() {
+        jTextCanton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCANTONActionPerformed(evt);
+                jTextCantonActionPerformed(evt);
             }
         });
 
-        jTextPROVINCIA.addActionListener(new java.awt.event.ActionListener() {
+        jTextProvincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextPROVINCIAActionPerformed(evt);
+                jTextProvinciaActionPerformed(evt);
             }
         });
 
-        jTextDISTRITO.addActionListener(new java.awt.event.ActionListener() {
+        jTextDistrito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextDISTRITOActionPerformed(evt);
+                jTextDistritoActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel8.setText("Apeliidos:");
+        jLabel8.setText("Apellidos:");
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel9.setText("Contraseña:");
 
-        usuarioCrear.addActionListener(new java.awt.event.ActionListener() {
+        jTextUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioCrearActionPerformed(evt);
+                jTextUsuarioActionPerformed(evt);
             }
         });
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel10.setText("ID usuario:");
 
-        jTextCONTRA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextCONTRAActionPerformed(evt);
-            }
-        });
-
-        jCheckBox1.setText("Acepto todos los termino y condiciones");
+        jCheckBox1.setText("Acepto todos los terminos y condiciones");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);
             }
         });
 
-        BTcrear.setText("Crear cuenta");
-        BTcrear.addActionListener(new java.awt.event.ActionListener() {
+        btnCrear.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnCrear.setText("Crear cuenta");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTcrearActionPerformed(evt);
+                btnCrearActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton1.setText("<");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAtras.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnAtras.setText("<");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAtrasActionPerformed(evt);
             }
         });
 
@@ -146,38 +146,46 @@ public class CrearFamilia extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jCheckBox1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextDISTRITO, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btnAtras)
                                 .addGap(147, 147, 147)
                                 .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jTextPROVINCIA, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                                    .addComponent(jTextCANTON, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                                    .addComponent(jTextAPELLIDO)
-                                    .addComponent(jLabel8))
-                                .addGap(192, 192, 192)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(usuarioCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jTextCONTRA, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BTcrear))))
-                        .addGap(0, 90, Short.MAX_VALUE)))
-                .addContainerGap())
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jTextProvincia, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                        .addComponent(jTextCanton, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                        .addComponent(jTextApellidos)
+                                        .addComponent(jLabel8))
+                                    .addComponent(jLabel2))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(192, 192, 192)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                            .addComponent(jLabel10)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jPassword)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnCrear)
+                                        .addGap(10, 10, 10)))))
+                        .addContainerGap(46, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(177, 177, 177)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jCheckBox1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,90 +193,103 @@ public class CrearFamilia extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jButton1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAtras))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel8))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(jLabel8))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel10)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextCanton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextAPELLIDO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usuarioCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel9))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextPROVINCIA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextCONTRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextCANTON, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BTcrear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jTextDISTRITO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jCheckBox1)
-                .addContainerGap())
+                .addGap(3, 3, 3)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextAPELLIDOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextAPELLIDOActionPerformed
+    private void jTextApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextApellidosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextAPELLIDOActionPerformed
+    }//GEN-LAST:event_jTextApellidosActionPerformed
 
-    private void jTextCANTONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCANTONActionPerformed
+    private void jTextCantonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCANTONActionPerformed
+    }//GEN-LAST:event_jTextCantonActionPerformed
 
-    private void jTextPROVINCIAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPROVINCIAActionPerformed
+    private void jTextProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextProvinciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextPROVINCIAActionPerformed
+    }//GEN-LAST:event_jTextProvinciaActionPerformed
 
-    private void jTextDISTRITOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDISTRITOActionPerformed
+    private void jTextDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDistritoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextDISTRITOActionPerformed
+    }//GEN-LAST:event_jTextDistritoActionPerformed
 
-    private void usuarioCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioCrearActionPerformed
+    private void jTextUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usuarioCrearActionPerformed
-
-    private void jTextCONTRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCONTRAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCONTRAActionPerformed
+    }//GEN-LAST:event_jTextUsuarioActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void BTcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTcrearActionPerformed
-        //Familia met = new Familia(usuarioCrear.getText());
-        //met.setUsuario(usuarioCrear.getText());
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        Familia check = login.metodoFamilia.buscarFamilia(jTextUsuario.getText());
+        if(check == null){
+            Familia f = new Familia(jTextApellidos.getText(), jTextProvincia.getText(), jTextCanton.getText(),
+            jTextDistrito.getText(), jTextUsuario.getText(), jPassword.getText());
+            login.metodoFamilia.anadeFamilia(f);    
+            jTextApellidos.setText("");
+            jTextProvincia.setText("");
+            jTextCanton.setText("");
+            jTextDistrito.setText("");
+            jTextUsuario.setText("");
+            jPassword.setText("");
+            login.setVisible(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "El usuario digitado ya existe, digite otro.");
+        }
         
-        
-        
-        Login siguiente = new Login();
-        siguiente.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BTcrearActionPerformed
+    }//GEN-LAST:event_btnCrearActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Login siguiente = new Login();
-          siguiente.setVisible(true);
-          this.setVisible(false);  
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        jTextApellidos.setText("");
+        jTextProvincia.setText("");
+        jTextCanton.setText("");
+        jTextDistrito.setText("");
+        jTextUsuario.setText("");
+        jPassword.setText("");
+        login.setVisible(true);
+        this.setVisible(false);  
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,8 +327,8 @@ public class CrearFamilia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BTcrear;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnCrear;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -319,13 +340,13 @@ public class CrearFamilia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextAPELLIDO;
-    private javax.swing.JTextField jTextCANTON;
-    private javax.swing.JTextField jTextCONTRA;
-    private javax.swing.JTextField jTextDISTRITO;
+    private javax.swing.JPasswordField jPassword;
+    private javax.swing.JTextField jTextApellidos;
+    private javax.swing.JTextField jTextCanton;
+    private javax.swing.JTextField jTextDistrito;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextPROVINCIA;
-    private javax.swing.JTextField usuarioCrear;
+    private javax.swing.JTextField jTextProvincia;
+    private javax.swing.JTextField jTextUsuario;
     // End of variables declaration//GEN-END:variables
 }

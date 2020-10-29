@@ -14,12 +14,18 @@ import java.util.Collections;
  *
  * @author josue
  */
-public class Proyecto_POO {
+public class main {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {/*
+    public static void main(String[] args) throws IOException {
+        MetodoFamilia Familias = new MetodoFamilia();
+        Login login = new Login();
+        login.metodoFamilia = Familias;
+        login.setVisible(true);
+        
+        /*
         // TODO code application logic here
         MetodoFamilia aa = new MetodoFamilia();
         aa.anadeFamilia(new Familia("aa","cc","ss","sa",546540,545225));
@@ -41,7 +47,7 @@ public class Proyecto_POO {
         aa.ordenAhorros();
         for(Familia f: aa.getFamilias()){
             System.out.println(f.getTotalIngresos()-f.getTotalEgresos());
-        }*/
+        }
         String a = "hola";
         System.out.println(a);
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -49,7 +55,7 @@ public class Proyecto_POO {
         if(text != ""){
             a = "worked";
             }
-        System.out.println(a);
+        System.out.println(a);*/
     }
     
 }

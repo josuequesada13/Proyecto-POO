@@ -18,6 +18,8 @@ public class Familia{
     private String provincia ;
     private String canton;
     private String distrito;
+    private String nombreUsuario;
+    private String contrasegna;
     private ClaseSocial claseSocial;
     private double totalEgresos;
     private double totalIngresos;
@@ -34,13 +36,19 @@ public class Familia{
         this.listaIngresos = new ArrayList<>();
     }
     
-    public Familia(String apellidosFamiliar, String provincia, String canton, String distrito, double ing, double eng) {
+    public Familia(String apellidosFamiliar, String provincia, String canton, String distrito, String usuario, String contra) {
         this.apellidosFamilia = apellidosFamiliar;
         this.provincia = provincia;
         this.canton = canton;
         this.distrito = distrito;
-        this.totalIngresos = ing;
-        this.totalEgresos = eng;
+        this.nombreUsuario = usuario;
+        this.contrasegna = contra;
+        this.listaGastos = new ArrayList<>();
+        this.listaIngresos = new ArrayList<>();
+    }
+    
+    public Familia(){
+        
     }
     
     public void anadeFamiliar(String nombre, int id, int edad, String trabajo, String genero, String gradoEscolaridad){
@@ -108,6 +116,14 @@ public class Familia{
 
     public String getDistrito() {
         return distrito;
+    }
+    
+    public String getUsuario(){
+        return nombreUsuario;
+    }
+    
+    public String getContra(){
+        return contrasegna;
     }
     
     public String getClaseSocial(){

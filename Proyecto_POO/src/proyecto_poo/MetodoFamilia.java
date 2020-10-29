@@ -31,6 +31,17 @@ public class MetodoFamilia {
         this.Familias = a;
     }
     
+    public Familia buscarFamilia(String usuario){
+        Familia aux = null;
+        for(Familia f: Familias){
+            if(f.getUsuario().equals(usuario)){
+                aux = f;
+            }
+        }
+        System.out.println(aux);
+        return aux;
+    }
+    
     public double mayorArray(double[] a){
         double i = 0;
         for(int x = 0; x < a.length; x++){
