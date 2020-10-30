@@ -23,17 +23,15 @@ public class Familia{
     private ClaseSocial claseSocial;
     private double totalEgresos;
     private double totalIngresos;
-    private ArrayList<Persona> miembrosFamilia; 
-    private ArrayList<Egreso> listaGastos;
-    private ArrayList<Ingreso> listaIngresos;
+    private ArrayList<Persona> miembrosFamilia = new ArrayList<>(); 
+    private ArrayList<Egreso> listaGastos = new ArrayList<>();
+    private ArrayList<Ingreso> listaIngresos = new ArrayList<>();
      
     public Familia(String apellidosFamiliar, String provincia, String canton, String distrito) {
         this.apellidosFamilia = apellidosFamiliar;
         this.provincia = provincia;
         this.canton = canton;
         this.distrito = distrito;
-        this.listaGastos = new ArrayList<>();
-        this.listaIngresos = new ArrayList<>();
     }
     
     public Familia(String apellidosFamiliar, String provincia, String canton, String distrito, String usuario, String contra) {
@@ -43,18 +41,21 @@ public class Familia{
         this.distrito = distrito;
         this.nombreUsuario = usuario;
         this.contrasegna = contra;
-        this.listaGastos = new ArrayList<>();
-        this.listaIngresos = new ArrayList<>();
     }
     
     public Familia(){
         
     }
     
-    public void anadeFamiliar(String nombre, int id, int edad, String trabajo, String genero, String gradoEscolaridad){
+    public void anadeFamiliar(String nombre, String id, String edad, String trabajo, String genero, String gradoEscolaridad){
         Persona miembroFamilia = new Persona(nombre, id, edad, trabajo, genero, gradoEscolaridad);
         miembroFamilia.setFamilia(this);
         this.miembrosFamilia.add(miembroFamilia);
+    }
+    
+    public void anadeFamiliar(Persona p){
+        p.setFamilia(this);
+        miembrosFamilia.add(p);
     }
     
     public Persona buscarPersona(String nombre){

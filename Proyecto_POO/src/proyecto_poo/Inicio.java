@@ -16,6 +16,8 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class Inicio extends javax.swing.JFrame {
     public Login login;
+    public Familia familiaActual;
+    public CrearUsuario creaUsuario = new CrearUsuario();
 
     /**
      * Creates new form Inicio
@@ -58,8 +60,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        btnCrearUsuario = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
@@ -187,14 +188,12 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 48)); // NOI18N
         jLabel3.setText("BANK");
 
-        jButton6.setText("Crear nuevo usuario");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearUsuario.setText("Crear nuevo familiar");
+        btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnCrearUsuarioActionPerformed(evt);
             }
         });
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,19 +201,15 @@ public class Inicio extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addComponent(btnCrearUsuario)
+                .addContainerGap(271, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jButton6)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnCrearUsuario)
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Familia", jPanel1);
@@ -310,6 +305,11 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane6.setViewportView(jList4);
 
         btnAnadirTransaccion.setText("Añadir");
+        btnAnadirTransaccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnadirTransaccionActionPerformed(evt);
+            }
+        });
 
         jComboTransaccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingreso", "Egreso" }));
         jComboTransaccion.addActionListener(new java.awt.event.ActionListener() {
@@ -438,9 +438,11 @@ public class Inicio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
+        creaUsuario.inicio = this;
+        creaUsuario.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
     private void jComboTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTransaccionActionPerformed
         if(jComboTransaccion.getSelectedItem().toString().equals("Ingreso")){
@@ -455,6 +457,10 @@ public class Inicio extends javax.swing.JFrame {
             System.out.println("egreso");
         }
     }//GEN-LAST:event_jComboTransaccionActionPerformed
+
+    private void btnAnadirTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirTransaccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnadirTransaccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -494,6 +500,7 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnadirTransaccion;
+    private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -503,7 +510,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -512,7 +518,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboTipoTrans;
     private javax.swing.JComboBox<String> jComboTransaccion;

@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Persona {
     private String nombre;
-    private int id;
-    private int edad;
+    private String id;
+    private String edad;
     private ArrayList<String> trabajos;
     private String genero;
     private String gradoEscolaridad;
@@ -24,7 +24,7 @@ public class Persona {
     private ArrayList<Ingreso> ingresos;
     private Familia familia;
 
-    public Persona(String nombre, int id, int edad, String trabajo, String genero, String gradoEscolaridad) {
+    public Persona(String nombre, String id, String edad, String trabajo, String genero, String gradoEscolaridad) {
         this.nombre = nombre;
         this.id = id;
         this.edad = edad;
@@ -62,11 +62,11 @@ public class Persona {
         return nombre;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
