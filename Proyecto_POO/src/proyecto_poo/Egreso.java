@@ -10,12 +10,6 @@ package proyecto_poo;
  * @author josue
  */
 public class Egreso extends Transaccion{
-    /*private int fisiologia;
-    private int seguridad;
-    private int afiliacion;
-    private int reconocimiento;
-    private int autorrelacion;
-    private int total; */ // Revisar como manejar esto <------------------
     private String clasificacion;
 
     public Egreso(String clasificacion, double monto, String descripcion) {

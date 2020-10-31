@@ -50,8 +50,8 @@ public class Persona {
         this.familia.anadeEgresos(nuevoEgreso);
     }
     
-    public void anadirIngreso(String nombre, double monto, String descripcion){
-        Ingreso nuevoIngreso = new Ingreso(nombre, monto, descripcion);
+    public void anadirIngreso(double monto, String descripcion){
+        Ingreso nuevoIngreso = new Ingreso(monto, descripcion);
         this.ingresos.add(nuevoIngreso);
         this.totalIngresos += monto;
         this.familia.anadeTotalIngresos(monto);
