@@ -10,6 +10,7 @@ package proyecto_poo;
 import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
@@ -20,6 +21,7 @@ import javax.swing.ListModel;
 public class Inicio extends javax.swing.JFrame {
     public Login login;
     public Familia familiaActual;
+    public MetodoFamilia familias;
     public CrearUsuario creaUsuario = new CrearUsuario();
 
     /**
@@ -65,17 +67,19 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnCrearUsuario = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        btnPorcentajes = new javax.swing.JButton();
+        btnAhorros = new javax.swing.JButton();
+        btnGastosBasicos = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextReportes = new javax.swing.JTextArea();
+        btnAutorrealizacion = new javax.swing.JButton();
+        btnEscolarAhorro = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList<>();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jListados = new javax.swing.JList<>();
+        btnFamiliasIngreso = new javax.swing.JButton();
+        btnFamiliasSinAhorro = new javax.swing.JButton();
+        btnFamiliasAhorro = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnAnadirTransaccion = new javax.swing.JButton();
         jComboTransaccion = new javax.swing.JComboBox<>();
@@ -91,6 +95,7 @@ public class Inicio extends javax.swing.JFrame {
         jTextMonto = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTextTransacciones = new javax.swing.JTextArea();
+        btnSalir = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -209,102 +214,152 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnCrearUsuario)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(328, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnCrearUsuario)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Familia", jPanel1);
 
-        jButton10.setText("jButton10");
+        btnPorcentajes.setText("Porcentaje clase sociales");
+        btnPorcentajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPorcentajesActionPerformed(evt);
+            }
+        });
 
-        jButton11.setText("jButton11");
+        btnAhorros.setText("Capacidad de ahorro");
+        btnAhorros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAhorrosActionPerformed(evt);
+            }
+        });
 
-        jButton12.setText("jButton12");
+        btnGastosBasicos.setText("Gastos basicos");
+        btnGastosBasicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGastosBasicosActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        jTextReportes.setEditable(false);
+        jTextReportes.setColumns(20);
+        jTextReportes.setRows(5);
+        jScrollPane4.setViewportView(jTextReportes);
+
+        btnAutorrealizacion.setText("Gastos en autorrealizacion");
+        btnAutorrealizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAutorrealizacionActionPerformed(evt);
+            }
+        });
+
+        btnEscolarAhorro.setText("Grado escolar mas ahorrativo");
+        btnEscolarAhorro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEscolarAhorroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton10)
-                    .addComponent(jButton11)
-                    .addComponent(jButton12))
-                .addGap(54, 54, 54)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                    .addComponent(btnAhorros, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(btnPorcentajes, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnGastosBasicos, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAutorrealizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEscolarAhorro))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(39, 39, 39))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton10)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnPorcentajes)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton11)
+                        .addComponent(btnAhorros)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton12))
+                        .addComponent(btnGastosBasicos)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAutorrealizacion)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEscolarAhorro))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(192, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Reportes", jPanel4);
 
-        jList3.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        jScrollPane3.setViewportView(jListados);
+
+        btnFamiliasIngreso.setText("Familias por ingreso descendente");
+        btnFamiliasIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFamiliasIngresoActionPerformed(evt);
+            }
         });
-        jScrollPane3.setViewportView(jList3);
 
-        jButton7.setText("jButton7");
+        btnFamiliasSinAhorro.setText("Familias sin ahorros");
 
-        jButton8.setText("jButton8");
-
-        jButton9.setText("jButton9");
+        btnFamiliasAhorro.setText("Familias por ahorro descendente");
+        btnFamiliasAhorro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFamiliasAhorroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jButton7)
-                .addGap(33, 33, 33)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton8)
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton9)
-                        .addGap(0, 134, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(138, 138, 138)
+                .addComponent(btnFamiliasSinAhorro, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(btnFamiliasIngreso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btnFamiliasAhorro, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(btnFamiliasIngreso)
+                    .addComponent(btnFamiliasAhorro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnFamiliasSinAhorro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Listado", jPanel5);
@@ -424,10 +479,17 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(jButton13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane7)))
-                .addGap(20, 31, Short.MAX_VALUE))
+                .addGap(20, 28, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Transaccion", jPanel2);
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -441,7 +503,9 @@ public class Inicio extends javax.swing.JFrame {
                                 .addGap(127, 127, 127)
                                 .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(146, 146, 146)
+                                .addContainerGap()
+                                .addComponent(btnSalir)
+                                .addGap(61, 61, 61)
                                 .addComponent(jLabel2)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -453,7 +517,9 @@ public class Inicio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(btnSalir))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(62, 62, 62)
@@ -569,6 +635,52 @@ public class Inicio extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jComboElegirFamActionPerformed
 
+    private void btnPorcentajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorcentajesActionPerformed
+        jTextReportes.setText("");
+        jTextReportes.append(familias.calculaClasificacion());
+    }//GEN-LAST:event_btnPorcentajesActionPerformed
+
+    private void btnAhorrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAhorrosActionPerformed
+        jTextReportes.setText("");
+        jTextReportes.append(familias.capacidadAhorro());
+    }//GEN-LAST:event_btnAhorrosActionPerformed
+
+    private void btnGastosBasicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGastosBasicosActionPerformed
+        jTextReportes.setText("");
+        jTextReportes.append(familias.egresosFisiologiaSeguridad());
+    }//GEN-LAST:event_btnGastosBasicosActionPerformed
+
+    private void btnAutorrealizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorrealizacionActionPerformed
+        jTextReportes.setText("");
+        jTextReportes.append(familias.ingresosAutorrealizacion());
+    }//GEN-LAST:event_btnAutorrealizacionActionPerformed
+
+    private void btnEscolarAhorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscolarAhorroActionPerformed
+        jTextReportes.setText("");
+        jTextReportes.append(familias.reporteCinco());
+    }//GEN-LAST:event_btnEscolarAhorroActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        login.setVisible(true);
+        this.familiaActual = null;
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnFamiliasAhorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFamiliasAhorroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFamiliasAhorroActionPerformed
+
+    private void btnFamiliasIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFamiliasIngresoActionPerformed
+        ArrayList<Familia> arraylist = familias.ordenIngresos();
+        DefaultListModel model = new DefaultListModel();
+        //model.addElement("Familia: \t\t");
+        for(Familia f: arraylist){
+            model.addElement(f.getApellidosFamilia() + " de " + f.getProvincia() + ", " + f.getCanton() +
+                    " tiene ingresos por la suma de " + f.getTotalIngresos());
+        }
+        jListados.setModel(model);
+    }//GEN-LAST:event_btnFamiliasIngresoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -606,20 +718,23 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAhorros;
     private javax.swing.JButton btnAnadirTransaccion;
+    private javax.swing.JButton btnAutorrealizacion;
     private javax.swing.JButton btnCrearUsuario;
+    private javax.swing.JButton btnEscolarAhorro;
+    private javax.swing.JButton btnFamiliasAhorro;
+    private javax.swing.JButton btnFamiliasIngreso;
+    private javax.swing.JButton btnFamiliasSinAhorro;
+    private javax.swing.JButton btnGastosBasicos;
+    private javax.swing.JButton btnPorcentajes;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -639,7 +754,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
-    private javax.swing.JList<String> jList3;
+    private javax.swing.JList<String> jListados;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -653,9 +768,9 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextDescripcion;
     private javax.swing.JTextField jTextMonto;
+    private javax.swing.JTextArea jTextReportes;
     private javax.swing.JTextArea jTextTransacciones;
     // End of variables declaration//GEN-END:variables
 }

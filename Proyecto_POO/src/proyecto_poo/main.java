@@ -24,38 +24,21 @@ public class main {
         Login login = new Login();
         login.metodoFamilia = Familias;
         login.setVisible(true);
-        
         /*
-        // TODO code application logic here
-        MetodoFamilia aa = new MetodoFamilia();
-        aa.anadeFamilia(new Familia("aa","cc","ss","sa",546540,545225));
-        aa.anadeFamilia(new Familia("b","cc","ss","sa", 78, 1));
-        aa.anadeFamilia(new Familia("x","cc","ss","sa", 4545, 1000));
-        aa.anadeFamilia(new Familia("a","cc","ss","sa", 455, 300));
-        
-        //CrearFamilia2 aaa = new CrearFamilia2();
-        //aaa.setVisible(true);
-        
-        
-        //Collections.sort(aa.getFamilias());
-        aa.ordenIngresos();
-        
-        for(Familia f: aa.getFamilias()){
-            System.out.println(f.getTotalIngresos());
-        }
-        
-        aa.ordenAhorros();
-        for(Familia f: aa.getFamilias()){
-            System.out.println(f.getTotalIngresos()-f.getTotalEgresos());
-        }
-        String a = "hola";
-        System.out.println(a);
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String text = in.readLine();
-        if(text != ""){
-            a = "worked";
-            }
-        System.out.println(a);*/
+        int i = 9;
+        double j = 3;
+        double h = 9;
+        int f = 3;
+        System.out.println(i/j + "int/double");
+        System.out.println(i/f + "int/int");
+        System.out.println(h/f+ "double/int");
+        System.out.println(h/j+ "double/double");
+        double cantidad = 5;
+        int p = 2;
+        int cant = 5;
+        System.out.println((p/cantidad) * 100);
+        System.out.println((p/cant) * 100);
+        */
     }
     
 }

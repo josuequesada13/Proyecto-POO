@@ -145,7 +145,10 @@ public class Login extends javax.swing.JFrame {
         if(fam != null){
             if(usuarioLogin.getText().equals(fam.getUsuario()) && jPassword.getText().equals(fam.getContra())){
                 inicio.login = this;
+                inicio.familias = metodoFamilia;
                 inicio.familiaActual = fam;
+                usuarioLogin.setText("");
+                jPassword.setText("");
                 inicio.setVisible(true);
                 this.setVisible(false);
             }else{

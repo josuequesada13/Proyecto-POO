@@ -56,6 +56,7 @@ public class Persona {
         this.totalIngresos += monto;
         this.familia.anadeTotalIngresos(monto);
         this.familia.anadeIngreso(nuevoIngreso);
+        this.familia.calculaClase();
     }
 
     public String getNombre() {

@@ -21,8 +21,8 @@ public class Familia{
     private String nombreUsuario;
     private String contrasegna;
     private ClaseSocial claseSocial;
-    private double totalEgresos;
-    private double totalIngresos;
+    private double totalEgresos = 0;
+    private double totalIngresos = 0;
     private ArrayList<Persona> miembrosFamilia = new ArrayList<>(); 
     private ArrayList<Egreso> listaGastos = new ArrayList<>();
     private ArrayList<Ingreso> listaIngresos = new ArrayList<>();
@@ -61,7 +61,7 @@ public class Familia{
     public Persona buscarPersona(String nombre){
         Persona aux = new Persona();
         for(Persona p: miembrosFamilia){
-            if(p.getNombre() == nombre){
+            if(p.getNombre().equals(nombre)){
                 aux = p;
                 break;
             }
@@ -73,13 +73,13 @@ public class Familia{
         String nombreClase = "";
         if(totalIngresos <= 250000){ //clase baja
             nombreClase = "Clase Baja";
-        }if(totalIngresos > 250000 && totalIngresos < 350000){//clase baja superior
+        }else if(totalIngresos > 250000 && totalIngresos < 350000){//clase baja superior
             nombreClase = "Clase Baja Superior";
-        }if(totalIngresos > 350000 && totalIngresos < 500000){// clase media 
+        }else if(totalIngresos > 350000 && totalIngresos < 500000){// clase media 
             nombreClase = "Clase Media";
-        }if(totalIngresos > 500000 && totalIngresos < 1000000){// clase media alta 
+        }else if(totalIngresos > 500000 && totalIngresos < 1000000){// clase media alta 
             nombreClase = "Clase Media Alta";
-        }if(totalIngresos > 1000000){ // clase alta 
+        }else if(totalIngresos > 1000000){ // clase alta 
             nombreClase = "Clase Alta";
         }
         claseSocial = new ClaseSocial(nombreClase);
@@ -165,6 +165,10 @@ public class Familia{
     
     public void anadeIngreso(Ingreso i){
         this.listaIngresos.add(i);
+    }
+    
+    public void setClaseS(ClaseSocial cs){
+        this.claseSocial = cs;
     }
     
     /*public void setClaseSocial(String clase){

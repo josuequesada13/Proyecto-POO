@@ -56,7 +56,7 @@ public class MetodoFamilia {
     Reporte 1, separa las familias y las clasifica de acuerdo a sus ingresos
     */
     public String calculaClasificacion(){
-        int cantidad = Familias.size();
+        final float cantidad = Familias.size();
         int claseAlta = 0;
         int claseMediaAlta = 0;
         int claseMedia = 0;
@@ -66,20 +66,27 @@ public class MetodoFamilia {
             double total = f.getTotalIngresos();
             if(total <= 250000){ //clase baja
                 claseBaja += 1;
-            }if(total > 250000 && total < 350000){//clase baja superior
+                System.out.println(f.getApellidosFamilia() + " baja");
+            }else if(total > 250000 && total <= 350000){//clase baja superior
                 claseBajaSuperior += 1;
-            }if(total > 350000 && total < 500000){// clase media 
+                System.out.println(f.getApellidosFamilia() + " baja sup");
+            }else if(total > 350000 && total <= 500000){// clase media 
                 claseMedia += 1;
-            }if(total > 500000 && total < 1000000){// clase media alta 
+                System.out.println(f.getApellidosFamilia() + " media");
+            }else if(total > 500000 && total <= 1000000){// clase media alta 
                 claseMediaAlta += 1;
-            }if(total > 1000000){ // clase alta 
+                System.out.println(f.getApellidosFamilia() + " media alta");
+            }else if(total > 1000000){ // clase alta 
                 claseAlta += 1;
+                System.out.println(f.getApellidosFamilia() + " alta");
             }
         }
-        return "La cantidad de familias es: " + cantidad + "\nEl total de familias por clasificacion es de:\n"
-                + "Clase Alta: " + claseAlta/cantidad * 100 + "\nClase Media Alta: " + claseMediaAlta/cantidad * 100
-                + "\nClase Media Baja: " + claseMedia/cantidad * 100 + "\nClase Baja Superior: " + claseBajaSuperior/cantidad * 100
-                + "\nClase Baja: " + claseBaja/cantidad * 100;
+        //System.out.println("alta " +claseAlta + " medialta " + claseMediaAlta+ " media "+ claseMedia +" bajasup "+
+                //claseBajaSuperior + " baja "+ claseBaja + " cantidad " +cantidad);
+        return "La cantidad de familias es: " + cantidad + "\nEl total de familias por clasificacion \nes de:\n"
+                + "Clase Alta: " + ((claseAlta/cantidad) * 100) + "\nClase Media Alta: "+ ((claseMediaAlta/cantidad) * 100)
+                + "\nClase Media Baja: " + ((claseMedia/cantidad) * 100) + "\nClase Baja Superior: " + ((claseBajaSuperior/cantidad) * 100)
+                + "\nClase Baja: " + ((claseBaja/cantidad) * 100);
     }
     
     /*
@@ -125,14 +132,14 @@ public class MetodoFamilia {
                 clase = cs.getNombre();
             }
         }
-        return "La " + clase + " en promedio, tiene capacidad de ahorrar un " + mayorPorcentaje +
-                "% de sus ingresos.";
+        return "La " + clase + " en promedio, \ntiene capacidad de ahorrar \nun " + mayorPorcentaje +
+                "% de sus \ningresos.";
     }
        
     /*
     Reporte 3, calcula el porcentaje de familias que solo gastan en fisiologia y seguridad
     */
-   public String ingresosFisiologiaSeguridad(){
+    public String egresosFisiologiaSeguridad(){
         int cantidad = Familias.size();
         int porcentaje = 0;
         for(Familia f: Familias){
@@ -144,7 +151,7 @@ public class MetodoFamilia {
                 }
             }
         }
-        return "El " + ((porcentaje/cantidad) * 100) + "% de las familias solo gastan en los dos niveles basicos\n Fisiologia y seguridad";
+        return "El " + ((porcentaje/cantidad) * 100) + "% de las familias solo gastan en \nlos dos niveles basicos\n Fisiologia y seguridad";
     }
     
     /*
@@ -152,7 +159,7 @@ public class MetodoFamilia {
     de sus ingresos en actividades de autorrealización (ultimo nivel).
     */
     public String ingresosAutorrealizacion(){
-        double cantidad = 0;
+        int cantidad = 0;
         for(Familia f: Familias){
             double ingreso = f.getTotalIngresos();
             double gasto = 0;
@@ -165,7 +172,7 @@ public class MetodoFamilia {
                 cantidad += 1;
             }
         }
-        return "En total " + cantidad + " gastan mas de un 10 % de sus ingresos en Autorealizacion";
+        return "En total " + cantidad + " familia(s) gastan mas de \nun 10 % de sus ingresos en Autorealizacion";
     }
     
     /*
@@ -193,19 +200,19 @@ public class MetodoFamilia {
         String result = "";
         double i = mayorArray(array);
         if(i == ahorroPrimaria){
-            result = "El nivel de escolaridad que mas puede ahorrar es el de Primaria";
+            result = "El nivel de escolaridad que mas puede \nahorrar es el de Primaria";
         }if(i == ahorroSecundaria){
-            result = "El nivel de escolaridad que mas puede ahorrar es el de Secundaria";
+            result = "El nivel de escolaridad que mas puede \nahorrar es el de Secundaria";
         }if(i == ahorroDiversificada){
-            result = "El nivel de escolaridad que mas puede ahorrar es el de Educacion Diversificada";
+            result = "El nivel de escolaridad que mas puede \nahorrar es el de Educacion Diversificada";
         }if(i == ahorroUniversitaria){
-            result = "El nivel de escolaridad que mas puede ahorrar es el de Educacion Universitaria";
+            result = "El nivel de escolaridad que mas puede \nahorrar es el de Educacion Universitaria";
         }
         return result;
     }
     
     /*
-    Reporte 6, Listar en orden de mayor a menor las familias
+    Reporte 6, Listar en orden de mayor a menor las familias por cantidad de ingresos
     */
     public ArrayList ordenIngresos(){
         Collections.sort(Familias, Familia.IngresosComparator);
