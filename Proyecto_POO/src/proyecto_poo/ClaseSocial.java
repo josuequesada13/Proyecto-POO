@@ -40,5 +40,9 @@ public class ClaseSocial {
         this.ahorros += ahorros;
     }
     
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+    
     
 }

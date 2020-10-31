@@ -20,7 +20,8 @@ public class Familia{
     private String distrito;
     private String nombreUsuario;
     private String contrasegna;
-    private ClaseSocial claseSocial;
+    //private String claseSocial = 0;
+    private ClaseSocial claseSocial = new ClaseSocial("");
     private double totalEgresos = 0;
     private double totalIngresos = 0;
     private ArrayList<Persona> miembrosFamilia = new ArrayList<>(); 
@@ -70,19 +71,28 @@ public class Familia{
     }
     
     public void calculaClase(){
-        String nombreClase = "";
         if(totalIngresos <= 250000){ //clase baja
-            nombreClase = "Clase Baja";
+            claseSocial.setNombre("Clase Baja");
         }else if(totalIngresos > 250000 && totalIngresos < 350000){//clase baja superior
-            nombreClase = "Clase Baja Superior";
+            claseSocial.setNombre("Clase Baja Superior");
         }else if(totalIngresos > 350000 && totalIngresos < 500000){// clase media 
-            nombreClase = "Clase Media";
+            claseSocial.setNombre("Clase Media");
         }else if(totalIngresos > 500000 && totalIngresos < 1000000){// clase media alta 
-            nombreClase = "Clase Media Alta";
+            claseSocial.setNombre("Clase Media Alta");
         }else if(totalIngresos > 1000000){ // clase alta 
-            nombreClase = "Clase Alta";
+            claseSocial.setNombre("Clase Alta");
         }
-        claseSocial = new ClaseSocial(nombreClase);
+        /*if(totalIngresos <= 250000){ //clase baja
+            claseSocial =  "Clase Baja";
+        }else if(totalIngresos > 250000 && totalIngresos < 350000){//clase baja superior
+            claseSocial = "Clase Baja Superior";
+        }else if(totalIngresos > 350000 && totalIngresos < 500000){// clase media 
+            claseSocial = "Clase Media";
+        }else if(totalIngresos > 500000 && totalIngresos < 1000000){// clase media alta 
+            claseSocial = "Clase Media Alta";
+        }else if(totalIngresos > 1000000){ // clase alta 
+            claseSocial = "Clase Alta";
+        }*/
     }
     
     public static Comparator<Familia> IngresosComparator = new Comparator<Familia>() {

@@ -140,14 +140,14 @@ public class MetodoFamilia {
     Reporte 3, calcula el porcentaje de familias que solo gastan en fisiologia y seguridad
     */
     public String egresosFisiologiaSeguridad(){
-        int cantidad = Familias.size();
+        float cantidad = Familias.size();
         int porcentaje = 0;
         for(Familia f: Familias){
             for(Egreso e: f.getListaGastos()){
-                if(e.getClasificacion() != "Fisiologia" || e.getClasificacion() != "Seguridad"){
-                    break;
-                }else{
+                if(e.getClasificacion().equals("Fisiologia") || e.getClasificacion().equals("Seguridad")){
                     porcentaje += 1;
+                }else{
+                    break;
                 }
             }
         }

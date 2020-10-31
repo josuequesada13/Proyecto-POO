@@ -13,6 +13,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -31,6 +33,16 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         jComboTipoTrans.setEnabled(false);
+        tabInfo.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                jTextTransacciones.setText("");
+                jTextReportes.setText("");
+                DefaultListModel listModel = new DefaultListModel();
+                listModel.addElement("");
+                jListados.setModel(listModel);
+                jTextInfoFam.setText("");
+            }
+        });
     }
 
     /**
@@ -63,9 +75,17 @@ public class Inicio extends javax.swing.JFrame {
         jComboBox7 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabInfo = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         btnCrearUsuario = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextInfoFam = new javax.swing.JTextArea();
+        btnMiembros = new javax.swing.JButton();
+        btnEgresosFam = new javax.swing.JButton();
+        btnIngresosFam = new javax.swing.JButton();
+        btnAhorrosFam = new javax.swing.JButton();
+        btnClaseSocial = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnPorcentajes = new javax.swing.JButton();
         btnAhorros = new javax.swing.JButton();
@@ -88,13 +108,14 @@ public class Inicio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton13 = new javax.swing.JButton();
+        btnIngresos = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jComboElegirFam = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jTextMonto = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTextTransacciones = new javax.swing.JTextArea();
+        btnEgresos = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
@@ -207,24 +228,97 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        jTextInfoFam.setEditable(false);
+        jTextInfoFam.setColumns(20);
+        jTextInfoFam.setRows(5);
+        jScrollPane6.setViewportView(jTextInfoFam);
+
+        btnMiembros.setText("Ver miembros de familia");
+        btnMiembros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMiembrosActionPerformed(evt);
+            }
+        });
+
+        btnEgresosFam.setText("Total de gastos familiares");
+        btnEgresosFam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEgresosFamActionPerformed(evt);
+            }
+        });
+
+        btnIngresosFam.setText("Total de ingresos familiares");
+        btnIngresosFam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresosFamActionPerformed(evt);
+            }
+        });
+
+        btnAhorrosFam.setText("Ahorros Familiares");
+        btnAhorrosFam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAhorrosFamActionPerformed(evt);
+            }
+        });
+
+        btnClaseSocial.setText("Clase Social");
+        btnClaseSocial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClaseSocialActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Añadir trabajo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnCrearUsuario)
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnMiembros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEgresosFam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnIngresosFam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAhorrosFam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnClaseSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))
+                .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnCrearUsuario)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btnMiembros)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnIngresosFam)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEgresosFam)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAhorrosFam)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnClaseSocial))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCrearUsuario)
+                    .addComponent(jButton7))
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Familia", jPanel1);
+        tabInfo.addTab("Info Familia", jPanel1);
 
         btnPorcentajes.setText("Porcentaje clase sociales");
         btnPorcentajes.addActionListener(new java.awt.event.ActionListener() {
@@ -271,7 +365,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAhorros, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -309,7 +403,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Reportes", jPanel4);
+        tabInfo.addTab("Reportes", jPanel4);
 
         jScrollPane3.setViewportView(jListados);
 
@@ -321,6 +415,11 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         btnFamiliasSinAhorro.setText("Familias sin ahorros");
+        btnFamiliasSinAhorro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFamiliasSinAhorroActionPerformed(evt);
+            }
+        });
 
         btnFamiliasAhorro.setText("Familias por ahorro descendente");
         btnFamiliasAhorro.addActionListener(new java.awt.event.ActionListener() {
@@ -337,16 +436,13 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(138, 138, 138)
                 .addComponent(btnFamiliasSinAhorro, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(btnFamiliasIngreso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(btnFamiliasAhorro, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +458,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Listado", jPanel5);
+        tabInfo.addTab("Listado", jPanel5);
 
         btnAnadirTransaccion.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnAnadirTransaccion.setText("Añadir");
@@ -388,7 +484,12 @@ public class Inicio extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel6.setText("Descripcion:");
 
-        jButton13.setText("Cambiar Transaciones");
+        btnIngresos.setText("Ingresos");
+        btnIngresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresosActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel7.setText("Elegir miembro:");
@@ -413,6 +514,13 @@ public class Inicio extends javax.swing.JFrame {
         jTextTransacciones.setRows(5);
         jScrollPane7.setViewportView(jTextTransacciones);
 
+        btnEgresos.setText("Egresos");
+        btnEgresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEgresosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -424,7 +532,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextMonto)
                             .addComponent(btnAnadirTransaccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                             .addComponent(jComboTipoTrans, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboTransaccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -443,9 +551,12 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jComboElegirFam, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnIngresos)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEgresos)))))
                 .addGap(41, 41, 41))
         );
         jPanel2Layout.setVerticalGroup(
@@ -476,13 +587,15 @@ public class Inicio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAnadirTransaccion))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton13)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnIngresos)
+                            .addComponent(btnEgresos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane7)))
                 .addGap(20, 28, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Transaccion", jPanel2);
+        tabInfo.addTab("Transaccion", jPanel2);
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -510,7 +623,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTabbedPane1)))
+                        .addComponent(tabInfo)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -522,8 +635,8 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(btnSalir))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(62, 62, 62)
-                .addComponent(jTabbedPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(tabInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -590,13 +703,18 @@ public class Inicio extends javax.swing.JFrame {
     private void btnAnadirTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirTransaccionActionPerformed
         String usuario = (String)jComboElegirFam.getSelectedItem();
         if(usuario != null){
+            Persona persona =  familiaActual.buscarPersona(usuario);
             if(jComboTransaccion.getSelectedItem().toString().equals("Ingreso")){
-                familiaActual.buscarPersona(usuario).anadirIngreso(Integer.parseInt(jTextMonto.getText()), jTextDescripcion.getText());
+                persona.anadirIngreso(Integer.parseInt(jTextMonto.getText()), jTextDescripcion.getText());
                 System.out.println("Anadio un ingreso a " + usuario + " con un monto de " + jTextMonto.getText());
                 jTextMonto.setText("");
                 jTextDescripcion.setText("");
             }else if(jComboTransaccion.getSelectedItem().toString().equals("Egreso")){
-                familiaActual.buscarPersona(usuario).anadirEgreso((String)jComboTipoTrans.getSelectedItem(), 
+                if(Integer.parseInt(jTextMonto.getText()) > (persona.getTotalIngresos() - persona.getTotalEgresos())){
+                    JOptionPane.showMessageDialog(rootPane, "No puede registrar un monto mayor a sus ahorros.");
+                }
+                    
+                persona.anadirEgreso((String)jComboTipoTrans.getSelectedItem(), 
                         Integer.parseInt(jTextMonto.getText()), jTextDescripcion.getText());
                 System.out.println("Anadio un egreso a " + usuario + " con un monto de " + jTextMonto.getText());
                 jTextMonto.setText("");
@@ -667,7 +785,13 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnFamiliasAhorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFamiliasAhorroActionPerformed
-        // TODO add your handling code here:
+        ArrayList<Familia> arraylist = familias.ordenAhorros();
+        DefaultListModel model = new DefaultListModel();    
+        for(Familia f: arraylist){
+            model.addElement(f.getApellidosFamilia() + " de " + f.getProvincia() + ", " + f.getCanton() +
+                    " posee " + (f.getTotalIngresos() - f.getTotalEgresos()) + " en ahorros.");
+        }
+        jListados.setModel(model);                        
     }//GEN-LAST:event_btnFamiliasAhorroActionPerformed
 
     private void btnFamiliasIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFamiliasIngresoActionPerformed
@@ -676,10 +800,118 @@ public class Inicio extends javax.swing.JFrame {
         //model.addElement("Familia: \t\t");
         for(Familia f: arraylist){
             model.addElement(f.getApellidosFamilia() + " de " + f.getProvincia() + ", " + f.getCanton() +
-                    " tiene ingresos por la suma de " + f.getTotalIngresos());
+                    ", posee " + f.getTotalIngresos() + " en ingresos.");
         }
         jListados.setModel(model);
     }//GEN-LAST:event_btnFamiliasIngresoActionPerformed
+
+    private void btnFamiliasSinAhorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFamiliasSinAhorroActionPerformed
+        ArrayList<Familia> arraylist = familias.ListarSinAhorros();
+        DefaultListModel model = new DefaultListModel();
+        for(Familia f: arraylist){
+            if(f.getTotalIngresos() - f.getTotalEgresos() == 0){
+                model.addElement(f.getApellidosFamilia() + " de " + f.getProvincia() + ", " + f.getCanton() +
+                    " no posee ahorros. ");
+            }     
+        }
+        if(model.isEmpty()){
+            model.addElement("No hay familias sin ahorros.");
+        }
+        jListados.setModel(model);
+    }//GEN-LAST:event_btnFamiliasSinAhorroActionPerformed
+
+    private void btnIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosActionPerformed
+        jTextTransacciones.setText("");
+        String usuario = (String)jComboElegirFam.getSelectedItem();
+        if(usuario != null){
+            Persona persona = familiaActual.buscarPersona(usuario);
+            if(persona != null){
+                jTextTransacciones.setText("");
+                if(persona.getIngresos().isEmpty()){
+                    jTextTransacciones.append("Este usuario no tiene \ningresos registrados.");
+                }else{
+                    for(Ingreso i: persona.getIngresos()){
+                        jTextTransacciones.append(i.getDescripcion() + " - " + i.getMonto() + "\n");
+                    }  
+                }
+            }
+        }else{
+            jTextTransacciones.append("No se ha elegido \nun usuario.");
+        }    
+    }//GEN-LAST:event_btnIngresosActionPerformed
+
+    private void btnEgresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEgresosActionPerformed
+        jTextTransacciones.setText("");
+        String usuario = (String)jComboElegirFam.getSelectedItem();
+        if(usuario != null){
+            Persona persona = familiaActual.buscarPersona(usuario);
+            if(persona != null){
+                jTextTransacciones.setText("");
+                if(persona.getEgresos().isEmpty()){
+                    jTextTransacciones.append("Este usuario no tiene \negresos registrados.");
+                }else{
+                    for(Egreso e: persona.getEgresos()){
+                        jTextTransacciones.append(e.getDescripcion() + " - " + e.getMonto() + "\n");
+                    }
+                }
+            }
+        }else{
+            jTextTransacciones.append("No se ha elegido \nun usuario.");
+        }
+    }//GEN-LAST:event_btnEgresosActionPerformed
+
+    private void btnMiembrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiembrosActionPerformed
+        jTextInfoFam.setText("");
+        if(familiaActual.getMiembrosFamilia().isEmpty()){
+            jTextInfoFam.setText("Esta familia no tiene miembros.");
+        }else{
+            jTextInfoFam.append("Nombre:\tEdad:");
+            for(Persona p: familiaActual.getMiembrosFamilia()){
+                jTextInfoFam.append(p.getNombre() + "\t" + p.getEdad());
+            } 
+        }   
+    }//GEN-LAST:event_btnMiembrosActionPerformed
+
+    private void btnIngresosFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosFamActionPerformed
+        jTextInfoFam.setText("");
+        if(familiaActual.getTotalIngresos() == 0){
+            jTextInfoFam.setText("Esta familia no tiene \ningresos registrados.");
+        }else{
+            jTextInfoFam.setText("Esta familia registra "
+                    + familiaActual.getTotalIngresos() + " \ncolones en ingresos.");
+        }
+    }//GEN-LAST:event_btnIngresosFamActionPerformed
+
+    private void btnEgresosFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEgresosFamActionPerformed
+        jTextInfoFam.setText("");
+        if(familiaActual.getTotalEgresos() == 0){
+            jTextInfoFam.setText("Esta familia no tiene \negresos registrados.");
+        }else{
+            jTextInfoFam.setText("Esta familia registra "
+                    + familiaActual.getTotalEgresos() + " \ncolones en egresos.");
+        }
+    }//GEN-LAST:event_btnEgresosFamActionPerformed
+
+    private void btnAhorrosFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAhorrosFamActionPerformed
+        jTextInfoFam.setText("");
+        if((familiaActual.getTotalIngresos() - familiaActual.getTotalEgresos()) == 0){
+            jTextInfoFam.setText("Esta familia no tiene ahorros.");
+        }else{
+            jTextInfoFam.setText("Esta familia registra "
+                    + (familiaActual.getTotalIngresos() - familiaActual.getTotalEgresos())
+                    + " \ncolones en ahorros.");
+        }
+    }//GEN-LAST:event_btnAhorrosFamActionPerformed
+
+    private void btnClaseSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClaseSocialActionPerformed
+        jTextInfoFam.setText("");
+        if(familiaActual.getClaseSocial() == null || familiaActual.getClaseSocial() == ""){
+            jTextInfoFam.setText("Esta familia no ha clasificado \nsu Clase Social todavia.");
+        }else{
+            jTextInfoFam.setText("La familia " + familiaActual.getApellidosFamilia() + " es clasificada \ncomo " 
+                    + familiaActual.getClaseSocial());
+        }
+    }//GEN-LAST:event_btnClaseSocialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -719,22 +951,29 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAhorros;
+    private javax.swing.JButton btnAhorrosFam;
     private javax.swing.JButton btnAnadirTransaccion;
     private javax.swing.JButton btnAutorrealizacion;
+    private javax.swing.JButton btnClaseSocial;
     private javax.swing.JButton btnCrearUsuario;
+    private javax.swing.JButton btnEgresos;
+    private javax.swing.JButton btnEgresosFam;
     private javax.swing.JButton btnEscolarAhorro;
     private javax.swing.JButton btnFamiliasAhorro;
     private javax.swing.JButton btnFamiliasIngreso;
     private javax.swing.JButton btnFamiliasSinAhorro;
     private javax.swing.JButton btnGastosBasicos;
+    private javax.swing.JButton btnIngresos;
+    private javax.swing.JButton btnIngresosFam;
+    private javax.swing.JButton btnMiembros;
     private javax.swing.JButton btnPorcentajes;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -765,12 +1004,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextDescripcion;
+    private javax.swing.JTextArea jTextInfoFam;
     private javax.swing.JTextField jTextMonto;
     private javax.swing.JTextArea jTextReportes;
     private javax.swing.JTextArea jTextTransacciones;
+    private javax.swing.JTabbedPane tabInfo;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,21 +24,6 @@ public class main {
         Login login = new Login();
         login.metodoFamilia = Familias;
         login.setVisible(true);
-        /*
-        int i = 9;
-        double j = 3;
-        double h = 9;
-        int f = 3;
-        System.out.println(i/j + "int/double");
-        System.out.println(i/f + "int/int");
-        System.out.println(h/f+ "double/int");
-        System.out.println(h/j+ "double/double");
-        double cantidad = 5;
-        int p = 2;
-        int cant = 5;
-        System.out.println((p/cantidad) * 100);
-        System.out.println((p/cant) * 100);
-        */
+        
     }
-    
 }
