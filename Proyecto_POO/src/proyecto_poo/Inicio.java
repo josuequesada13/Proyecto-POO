@@ -25,6 +25,7 @@ public class Inicio extends javax.swing.JFrame {
     public Familia familiaActual;
     public MetodoFamilia familias;
     public CrearUsuario creaUsuario = new CrearUsuario();
+    public AnadeTrabajo anadeTrabajo = new AnadeTrabajo();
 
     /**
      * Creates new form Inicio
@@ -85,7 +86,7 @@ public class Inicio extends javax.swing.JFrame {
         btnIngresosFam = new javax.swing.JButton();
         btnAhorrosFam = new javax.swing.JButton();
         btnClaseSocial = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnNuevoTrabajo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnPorcentajes = new javax.swing.JButton();
         btnAhorros = new javax.swing.JButton();
@@ -268,21 +269,21 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setText("Añadir trabajo");
+        btnNuevoTrabajo.setText("Añadir trabajo");
+        btnNuevoTrabajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoTrabajoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton7))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnMiembros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEgresosFam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -290,7 +291,11 @@ public class Inicio extends javax.swing.JFrame {
                             .addComponent(btnAhorrosFam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnClaseSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCrearUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNuevoTrabajo)))
                 .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
@@ -314,7 +319,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrearUsuario)
-                    .addComponent(jButton7))
+                    .addComponent(btnNuevoTrabajo))
                 .addContainerGap())
         );
 
@@ -696,8 +701,7 @@ public class Inicio extends javax.swing.JFrame {
             }
             DefaultComboBoxModel model = new DefaultComboBoxModel(miembros);
             jComboElegirFam.setModel(model);
-        }
-        
+        }  
     }
     
     private void btnAnadirTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirTransaccionActionPerformed
@@ -865,9 +869,9 @@ public class Inicio extends javax.swing.JFrame {
         if(familiaActual.getMiembrosFamilia().isEmpty()){
             jTextInfoFam.setText("Esta familia no tiene miembros.");
         }else{
-            jTextInfoFam.append("Nombre:\tEdad:");
+            jTextInfoFam.append("Nombre:\tEdad:\n");
             for(Persona p: familiaActual.getMiembrosFamilia()){
-                jTextInfoFam.append(p.getNombre() + "\t" + p.getEdad());
+                jTextInfoFam.append(p.getNombre() + "\t" + p.getEdad() + "\n");
             } 
         }   
     }//GEN-LAST:event_btnMiembrosActionPerformed
@@ -912,6 +916,12 @@ public class Inicio extends javax.swing.JFrame {
                     + familiaActual.getClaseSocial());
         }
     }//GEN-LAST:event_btnClaseSocialActionPerformed
+
+    private void btnNuevoTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoTrabajoActionPerformed
+        anadeTrabajo.setVisible(true);
+        anadeTrabajo.familiaActual = this.familiaActual;
+        anadeTrabajo.setMiembros();
+    }//GEN-LAST:event_btnNuevoTrabajoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -966,6 +976,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnIngresos;
     private javax.swing.JButton btnIngresosFam;
     private javax.swing.JButton btnMiembros;
+    private javax.swing.JButton btnNuevoTrabajo;
     private javax.swing.JButton btnPorcentajes;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton1;
@@ -973,7 +984,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;

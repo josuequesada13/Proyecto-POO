@@ -172,7 +172,7 @@ public class MetodoFamilia {
                 cantidad += 1;
             }
         }
-        return "En total " + cantidad + " familia(s) gastan mas de \nun 10 % de sus ingresos en Autorealizacion";
+        return "En total " + cantidad + " familia(s) gastan \nmas de un 10 % de sus \ningresos en Autorealizacion";
     }
     
     /*
