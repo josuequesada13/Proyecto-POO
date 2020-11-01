@@ -69,6 +69,16 @@ public class Persona {
         return semanales;
     }
     
+    public double egresosSemana(int semana){
+        double total = 0;
+        for(Egreso e: egresos){
+            if(e.getSemana() == semana){
+                total += e.getMonto();
+            }
+        }
+        return total;
+    }
+    
     public ArrayList ingresosPorSemana(int semana){
         ArrayList<Ingreso> semanales = new ArrayList<>();
         for(Ingreso i: ingresos){
@@ -77,6 +87,19 @@ public class Persona {
             }
         }
         return semanales;
+    }
+    
+    public int semanaMasgastos(){
+        int semana = 0;
+        int cont = 1;
+        double gastos = 0;
+        while(cont <= 53){
+            if(egresosSemana(cont) >= gastos){
+                gastos = egresosSemana(cont);
+                semana = cont;
+            }    
+        }
+        return semana;
     }
 
     public String getNombre() {
