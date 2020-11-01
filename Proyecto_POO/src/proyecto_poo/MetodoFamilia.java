@@ -38,8 +38,20 @@ public class MetodoFamilia {
                 aux = f;
             }
         }
-        System.out.println(aux);
         return aux;
+    }
+    
+    public boolean buscarCedula(int id){
+        boolean revisa = false;
+        for(Familia f: Familias){
+            for(Persona p: f.getMiembrosFamilia()){
+                if(p.getId() == id){
+                    revisa = true;
+                    break;
+                }
+            }
+        }
+        return revisa;
     }
     
     public double mayorArray(double[] a){
@@ -66,23 +78,16 @@ public class MetodoFamilia {
             double total = f.getTotalIngresos();
             if(total <= 250000){ //clase baja
                 claseBaja += 1;
-                System.out.println(f.getApellidosFamilia() + " baja");
             }else if(total > 250000 && total <= 350000){//clase baja superior
                 claseBajaSuperior += 1;
-                System.out.println(f.getApellidosFamilia() + " baja sup");
             }else if(total > 350000 && total <= 500000){// clase media 
                 claseMedia += 1;
-                System.out.println(f.getApellidosFamilia() + " media");
             }else if(total > 500000 && total <= 1000000){// clase media alta 
                 claseMediaAlta += 1;
-                System.out.println(f.getApellidosFamilia() + " media alta");
             }else if(total > 1000000){ // clase alta 
                 claseAlta += 1;
-                System.out.println(f.getApellidosFamilia() + " alta");
             }
         }
-        //System.out.println("alta " +claseAlta + " medialta " + claseMediaAlta+ " media "+ claseMedia +" bajasup "+
-                //claseBajaSuperior + " baja "+ claseBaja + " cantidad " +cantidad);
         return "La cantidad de familias es: " + cantidad + "\nEl total de familias por clasificacion \nes de:\n"
                 + "Clase Alta: " + ((claseAlta/cantidad) * 100) + "\nClase Media Alta: "+ ((claseMediaAlta/cantidad) * 100)
                 + "\nClase Media Baja: " + ((claseMedia/cantidad) * 100) + "\nClase Baja Superior: " + ((claseBajaSuperior/cantidad) * 100)
@@ -94,7 +99,7 @@ public class MetodoFamilia {
     ingresos
     */
     public String capacidadAhorro(){
-        int mayorPorcentaje = 0;
+        double mayorPorcentaje = 0;
         String clase = "";
         ClaseSocial baja = new ClaseSocial("Clase Baja");
         ClaseSocial bajaSup = new ClaseSocial("Clase Baja Superior");
@@ -127,8 +132,8 @@ public class MetodoFamilia {
         }
         ClaseSocial[] array = {baja, bajaSup, media, mediaAlta, alta};
         for(ClaseSocial cs: array){
-            if((int)(cs.getAhorros() - cs.getIngresos() * 100) > mayorPorcentaje){
-                mayorPorcentaje = (int)(cs.getAhorros()-cs.getIngresos()*100);
+            if((cs.getAhorros() - cs.getIngresos() * 100) > mayorPorcentaje){
+                mayorPorcentaje = (cs.getAhorros()-cs.getIngresos()*100);
                 clase = cs.getNombre();
             }
         }
@@ -143,13 +148,9 @@ public class MetodoFamilia {
         float cantidad = Familias.size();
         int porcentaje = 0;
         for(Familia f: Familias){
-            for(Egreso e: f.getListaGastos()){
-                if(e.getClasificacion().equals("Fisiologia") || e.getClasificacion().equals("Seguridad")){
-                    porcentaje += 1;
-                }else{
-                    break;
-                }
-            }
+            if(f.revisaEgresos()){
+                porcentaje += 1;
+            } 
         }
         return "El " + ((porcentaje/cantidad) * 100) + "% de las familias solo gastan en \nlos dos niveles basicos\n Fisiologia y seguridad";
     }
@@ -178,7 +179,7 @@ public class MetodoFamilia {
     /*
     Reporte 5 grado de escolaridad (individual no familiar) que más ahorra
     */
-    public String reporteCinco(){
+    public String ahorroPorEscolaridad(){
         double ahorroPrimaria = 0, ahorroSecundaria = 0, ahorroDiversificada = 0, ahorroUniversitaria = 0;
         for(Familia f: Familias){
             if(!f.getMiembrosFamilia().isEmpty()){
@@ -240,24 +241,4 @@ public class MetodoFamilia {
         }
         return sinAhorros;
     }
-        
-    /*
-    Reporte 9, en que semana la persona x registra mas gastos
-    
-    
-    Estos dos reportes se podrian hacer en la misma clase persona para no tener que estar 
-    pariendo pidiendo datos por todo lado
-    */
-    public String personaMasGastos(String nombre){
-        Persona aux = new Persona();
-        for(Familia f: Familias){
-            f.buscarPersona(nombre);
-            
-        }
-        return "";
-    }
-    
-    /*
-    Reporte 10, en que semana la persona x registra mas ingresos
-    */
 }

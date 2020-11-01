@@ -20,20 +20,12 @@ public class Familia{
     private String distrito;
     private String nombreUsuario;
     private String contrasegna;
-    //private String claseSocial = 0;
     private ClaseSocial claseSocial = new ClaseSocial("");
     private double totalEgresos = 0;
     private double totalIngresos = 0;
     private ArrayList<Persona> miembrosFamilia = new ArrayList<>(); 
     private ArrayList<Egreso> listaGastos = new ArrayList<>();
     private ArrayList<Ingreso> listaIngresos = new ArrayList<>();
-     
-    public Familia(String apellidosFamiliar, String provincia, String canton, String distrito) {
-        this.apellidosFamilia = apellidosFamiliar;
-        this.provincia = provincia;
-        this.canton = canton;
-        this.distrito = distrito;
-    }
     
     public Familia(String apellidosFamiliar, String provincia, String canton, String distrito, String usuario, String contra) {
         this.apellidosFamilia = apellidosFamiliar;
@@ -45,10 +37,9 @@ public class Familia{
     }
     
     public Familia(){
-        
     }
     
-    public void anadeFamiliar(String nombre, String id, String edad, String trabajo, String genero, String gradoEscolaridad){
+    public void anadeFamiliar(String nombre, int id, String edad, String trabajo, String genero, String gradoEscolaridad){
         Persona miembroFamilia = new Persona(nombre, id, edad, trabajo, genero, gradoEscolaridad);
         miembroFamilia.setFamilia(this);
         this.miembrosFamilia.add(miembroFamilia);
@@ -82,17 +73,23 @@ public class Familia{
         }else if(totalIngresos > 1000000){ // clase alta 
             claseSocial.setNombre("Clase Alta");
         }
-        /*if(totalIngresos <= 250000){ //clase baja
-            claseSocial =  "Clase Baja";
-        }else if(totalIngresos > 250000 && totalIngresos < 350000){//clase baja superior
-            claseSocial = "Clase Baja Superior";
-        }else if(totalIngresos > 350000 && totalIngresos < 500000){// clase media 
-            claseSocial = "Clase Media";
-        }else if(totalIngresos > 500000 && totalIngresos < 1000000){// clase media alta 
-            claseSocial = "Clase Media Alta";
-        }else if(totalIngresos > 1000000){ // clase alta 
-            claseSocial = "Clase Alta";
-        }*/
+    }
+    
+    public boolean revisaEgresos(){
+        boolean revisa = false;
+        if(listaGastos.isEmpty()){
+            revisa = false;
+        }else{
+            for(Egreso e: listaGastos){
+                if(e.getClasificacion().equals("Fisiologia") || e.getClasificacion().equals("Seguridad")){
+                    revisa = true;
+                }else{
+                    revisa = false;
+                    break;
+                }
+            }
+        }
+        return revisa;
     }
     
     public static Comparator<Familia> IngresosComparator = new Comparator<Familia>() {
@@ -180,8 +177,4 @@ public class Familia{
     public void setClaseS(ClaseSocial cs){
         this.claseSocial = cs;
     }
-    
-    /*public void setClaseSocial(String clase){
-        this.claseSocial = clase;
-    }*/
 }

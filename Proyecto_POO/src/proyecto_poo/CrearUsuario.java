@@ -211,18 +211,23 @@ public class CrearUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearFamActionPerformed
-        Persona p = new Persona(nombrePersona.getText(), idPersona.getText(), edadPersona.getText(),
-        trabajoPersona.getText(), jComboGenero.getSelectedItem().toString(), 
-                jComboGradoEsco.getSelectedItem().toString());
-        inicio.familiaActual.anadeFamiliar(p);
-        System.out.println(nombrePersona.getText());
-        nombrePersona.setText("");   
-        idPersona.setText("");
-        edadPersona.setText("");
-        trabajoPersona.setText("");
-        this.setVisible(false);
-        inicio.setMiembros();
-        inicio.setVisible(true);
+        if(inicio.familias.buscarCedula(Integer.parseInt(idPersona.getText()))){
+            JOptionPane.showMessageDialog(rootPane, "Esta cedula ya existe, digite otra");
+            idPersona.setText("");
+        }else{
+            Persona p = new Persona(nombrePersona.getText(), Integer.parseInt(idPersona.getText()), edadPersona.getText(),
+            trabajoPersona.getText(), jComboGenero.getSelectedItem().toString(), 
+                    jComboGradoEsco.getSelectedItem().toString());
+            inicio.familiaActual.anadeFamiliar(p);
+            System.out.println(nombrePersona.getText());
+            nombrePersona.setText("");   
+            idPersona.setText("");
+            edadPersona.setText("");
+            trabajoPersona.setText("");
+            this.setVisible(false);
+            inicio.setMiembros();
+            inicio.setVisible(true);
+        }   
     }//GEN-LAST:event_btnCrearFamActionPerformed
 
     private void idPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idPersonaActionPerformed

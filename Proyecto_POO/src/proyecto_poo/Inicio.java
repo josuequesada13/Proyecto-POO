@@ -480,6 +480,12 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        jComboTipoTrans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboTipoTransActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel4.setText("Tipo de trasaccion:");
 
@@ -680,13 +686,11 @@ public class Inicio extends javax.swing.JFrame {
         if(jComboTransaccion.getSelectedItem().toString().equals("Ingreso")){
             jComboTipoTrans.setEnabled(false);
             jComboTipoTrans.removeAllItems();
-            System.out.println("ingreso");
         }else if(jComboTransaccion.getSelectedItem().toString().equals("Egreso")){
             jComboTipoTrans.setEnabled(true);
             String egresos[] = {"Fisiologia", "Seguridad", "Afiliacion", "Reconocimiento", "Autorrealizacion"};
             DefaultComboBoxModel model = new DefaultComboBoxModel(egresos);
             jComboTipoTrans.setModel(model);
-            System.out.println("egreso");
         }
     }//GEN-LAST:event_jComboTransaccionActionPerformed
     
@@ -758,28 +762,48 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboElegirFamActionPerformed
 
     private void btnPorcentajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorcentajesActionPerformed
-        jTextReportes.setText("");
+         jTextReportes.setText("");
+        if(familiaActual.getMiembrosFamilia().isEmpty()){
+            jTextReportes.append("El calculo no se puede realizar \nya que la familia actual no \ntiene miembros.");
+        }else{
         jTextReportes.append(familias.calculaClasificacion());
+        }
     }//GEN-LAST:event_btnPorcentajesActionPerformed
 
     private void btnAhorrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAhorrosActionPerformed
         jTextReportes.setText("");
-        jTextReportes.append(familias.capacidadAhorro());
+        if(familiaActual.getMiembrosFamilia().isEmpty()){
+            jTextReportes.append("El calculo no se puede realizar \nya que la familia actual no \ntiene miembros.");
+        }else{
+            jTextReportes.append(familias.capacidadAhorro());
+        }
     }//GEN-LAST:event_btnAhorrosActionPerformed
 
     private void btnGastosBasicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGastosBasicosActionPerformed
         jTextReportes.setText("");
-        jTextReportes.append(familias.egresosFisiologiaSeguridad());
+        if(familiaActual.getMiembrosFamilia().isEmpty()){
+            jTextReportes.append("El calculo no se puede realizar \nya que la familia actual no \ntiene miembros.");
+        }else{
+            jTextReportes.append(familias.egresosFisiologiaSeguridad());
+        }
     }//GEN-LAST:event_btnGastosBasicosActionPerformed
 
     private void btnAutorrealizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorrealizacionActionPerformed
-        jTextReportes.setText("");
+         jTextReportes.setText("");
+        if(familiaActual.getMiembrosFamilia().isEmpty()){
+            jTextReportes.append("El calculo no se puede realizar \nya que la familia actual no \ntiene miembros.");
+        }else{
         jTextReportes.append(familias.ingresosAutorrealizacion());
+        }
     }//GEN-LAST:event_btnAutorrealizacionActionPerformed
 
     private void btnEscolarAhorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscolarAhorroActionPerformed
-        jTextReportes.setText("");
-        jTextReportes.append(familias.reporteCinco());
+         jTextReportes.setText("");
+        if(familiaActual.getMiembrosFamilia().isEmpty()){
+            jTextReportes.append("El calculo no se puede realizar \nya que la familia actual no \ntiene miembros.");
+        }else{
+        jTextReportes.append(familias.ahorroPorEscolaridad());
+        }
     }//GEN-LAST:event_btnEscolarAhorroActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -922,6 +946,10 @@ public class Inicio extends javax.swing.JFrame {
         anadeTrabajo.familiaActual = this.familiaActual;
         anadeTrabajo.setMiembros();
     }//GEN-LAST:event_btnNuevoTrabajoActionPerformed
+
+    private void jComboTipoTransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoTransActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboTipoTransActionPerformed
 
     /**
      * @param args the command line arguments
