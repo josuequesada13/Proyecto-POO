@@ -12,6 +12,11 @@ import java.util.Date;
  *
  * @author josue
  */
+
+/*
+Clase donde se guardan los datos de los ingresos que tendran las personas y las 
+familias.
+*/
 public class Ingreso extends Transaccion{
 
     public Ingreso(double monto, String descripcion, int semana) {

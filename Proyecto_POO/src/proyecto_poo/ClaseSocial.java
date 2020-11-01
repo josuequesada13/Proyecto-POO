@@ -11,6 +11,10 @@ import java.util.ArrayList;
  *
  * @author josue
  */
+/*
+Clase para almacenar las clases sociales de las familias como tambien
+para organizar datos en uno de los reportes
+*/
 public class ClaseSocial { 
     private double ingresos;
     private double ahorros;

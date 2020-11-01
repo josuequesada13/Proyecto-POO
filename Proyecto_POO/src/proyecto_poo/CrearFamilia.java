@@ -47,7 +47,6 @@ public class CrearFamilia extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextUsuario = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
         btnCrear = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         jPassword = new javax.swing.JPasswordField();
@@ -116,13 +115,6 @@ public class CrearFamilia extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel10.setText("ID usuario:");
 
-        jCheckBox1.setText("Acepto todos los terminos y condiciones");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
-
         btnCrear.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnCrear.setText("Crear cuenta");
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -144,9 +136,9 @@ public class CrearFamilia extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -173,19 +165,12 @@ public class CrearFamilia extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnCrear)
-                                        .addGap(10, 10, 10)))))
-                        .addContainerGap(46, Short.MAX_VALUE))
+                                        .addGap(10, 10, 10))))
+                            .addComponent(jLabel5)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBox1)
-                .addContainerGap())
+                        .addGap(177, 177, 177)
+                        .addComponent(jLabel4)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,9 +209,7 @@ public class CrearFamilia extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox1)
-                .addGap(3, 3, 3)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,14 +239,15 @@ public class CrearFamilia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextUsuarioActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         Familia check = login.metodoFamilia.buscarFamilia(jTextUsuario.getText());
         if(check == null){
-            Familia f = new Familia(jTextApellidos.getText(), jTextProvincia.getText(), jTextCanton.getText(),
+            if(jTextApellidos.getText().equals("") || jTextProvincia.getText().equals("") || 
+                    jTextCanton.getText().equals("") || jTextDistrito.getText().equals("") || 
+                    jTextUsuario.getText().equals("") || jPassword.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Por favor rellene todos los espacios");
+            }else{
+                Familia f = new Familia(jTextApellidos.getText(), jTextProvincia.getText(), jTextCanton.getText(),
             jTextDistrito.getText(), jTextUsuario.getText(), jPassword.getText());
             login.metodoFamilia.anadeFamilia(f);    
             jTextApellidos.setText("");
@@ -274,8 +258,12 @@ public class CrearFamilia extends javax.swing.JFrame {
             jPassword.setText("");
             login.setVisible(true);
             this.setVisible(false);
+            }
         }else{
             JOptionPane.showMessageDialog(null, "El usuario digitado ya existe, digite otro.");
+            jTextUsuario.setText("");
+            jPassword.setText("");
+            
         }
         
     }//GEN-LAST:event_btnCrearActionPerformed
@@ -329,7 +317,6 @@ public class CrearFamilia extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnCrear;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

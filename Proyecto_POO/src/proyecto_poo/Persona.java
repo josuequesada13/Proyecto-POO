@@ -11,6 +11,11 @@ import java.util.ArrayList;
  *
  * @author josue
  */
+
+/*
+Clase persona donde se almacenara toda la informacion de una persona creada, 
+desde su nombre, hasta sus trabajos, egresos, ingresos, etc.
+*/
 public class Persona {
     private String nombre;
     private int id;
@@ -38,10 +43,15 @@ public class Persona {
         this.ingresos = new ArrayList<>();
     }
     
+    
+    //Constructor utilizado para cuando se necesita crear una persona auxiliar para algunos calculos
     public Persona(){
-        
     }
     
+    /*
+    Anade un objeto egreso a la lista de egresos, tambien almacena el monto del mismo
+    en el total de la persona como tambien de la familia
+    */
     public void anadirEgreso(String clasificacion, double monto, String descripcion, int semana){
         Egreso nuevoEgreso = new Egreso(clasificacion, monto, descripcion, semana);
         this.egresos.add(nuevoEgreso);
@@ -50,6 +60,10 @@ public class Persona {
         this.familia.anadeEgresos(nuevoEgreso);
     }
     
+    /*
+    Anade un objeto ingreso a la lista de egresos, tambien almacena el monto del mismo
+    en el total de la persona como tambien de la familia
+    */
     public void anadirIngreso(double monto, String descripcion, int semana){
         Ingreso nuevoIngreso = new Ingreso(monto, descripcion, semana);
         this.ingresos.add(nuevoIngreso);
@@ -69,6 +83,7 @@ public class Persona {
         return semanales;
     }
     
+    //Revisa el monto gastado en la semana dada
     public double egresosSemana(int semana){
         double total = 0;
         for(Egreso e: egresos){
@@ -79,6 +94,7 @@ public class Persona {
         return total;
     }
     
+    //Revisa los ingresos existentes en la semana dada
     public ArrayList ingresosPorSemana(int semana){
         ArrayList<Ingreso> semanales = new ArrayList<>();
         for(Ingreso i: ingresos){
@@ -89,6 +105,7 @@ public class Persona {
         return semanales;
     }
     
+    //Revisa la semana con mas gastos del agno, no se utiliza por ineficiencia
     public int semanaMasgastos(){
         int semana = 0;
         int cont = 1;

@@ -12,6 +12,11 @@ import java.util.Collections;
  *
  * @author josue
  */
+
+/*
+Clase que almacena una lista de todas las familias creadas para luego poder utilizar la
+aplicacion
+*/
 public class MetodoFamilia {
     private ArrayList<Familia> Familias;
     
@@ -19,6 +24,7 @@ public class MetodoFamilia {
         this.Familias = new ArrayList<>();
     }
     
+    //Anade la familia dada a la lista de familias
     public void anadeFamilia(Familia familia){
         this.Familias.add(familia);
     }
@@ -31,6 +37,7 @@ public class MetodoFamilia {
         this.Familias = a;
     }
     
+    //Buscar si el nombre de usuario dado ya existe
     public Familia buscarFamilia(String usuario){
         Familia aux = null;
         for(Familia f: Familias){
@@ -41,6 +48,7 @@ public class MetodoFamilia {
         return aux;
     }
     
+    //Revisa si un numero de cedula ya existe o no
     public boolean buscarCedula(int id){
         boolean revisa = false;
         for(Familia f: Familias){
@@ -54,6 +62,7 @@ public class MetodoFamilia {
         return revisa;
     }
     
+    //Revisa cual es el mayor numero de un array de doubles
     public double mayorArray(double[] a){
         double i = 0;
         for(int x = 0; x < a.length; x++){

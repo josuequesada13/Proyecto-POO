@@ -12,6 +12,10 @@ import java.util.Comparator;
  *
  * @author josue
  */
+
+/*
+Clase familia donde se guardara la informacion de cada familia creada
+*/
 public class Familia{
 
     private String apellidosFamilia;
@@ -36,20 +40,32 @@ public class Familia{
         this.contrasegna = contra;
     }
     
+    /*
+    Constructor usado para crear objetos auxiliares en algunos reportes
+    */
     public Familia(){
     }
     
+    /*
+    Anade una persona dados sus atributos, a la lista de miembros de la familia, como tambien crea la
+    referencia de la persona hacia la familia.
+    */
     public void anadeFamiliar(String nombre, int id, String edad, String trabajo, String genero, String gradoEscolaridad){
         Persona miembroFamilia = new Persona(nombre, id, edad, trabajo, genero, gradoEscolaridad);
         miembroFamilia.setFamilia(this);
         this.miembrosFamilia.add(miembroFamilia);
     }
     
+    /*
+    Anade un objeto persona, a la lista de miembros de la familia, como tambien crea la
+    referencia de la persona hacia la familia.
+    */
     public void anadeFamiliar(Persona p){
         p.setFamilia(this);
         miembrosFamilia.add(p);
     }
     
+    //Busca si una persona con el nombre de parametro existe o no en la lista de miembros
     public Persona buscarPersona(String nombre){
         Persona aux = new Persona();
         for(Persona p: miembrosFamilia){
@@ -61,6 +77,7 @@ public class Familia{
         return aux;
     }
     
+    //Calcula la clase social de la familia, cada vez que se registra un ingreso
     public void calculaClase(){
         if(totalIngresos <= 250000){ //clase baja
             claseSocial.setNombre("Clase Baja");
@@ -75,6 +92,7 @@ public class Familia{
         }
     }
     
+    //Revisa que la familia solo gaste en las dos categorias principales Fisiologia y seguridad
     public boolean revisaEgresos(){
         boolean revisa = false;
         if(listaGastos.isEmpty()){
@@ -92,6 +110,7 @@ public class Familia{
         return revisa;
     }
     
+    //Para comparar y ordenar las familias de acuerdo a sus ingresos 
     public static Comparator<Familia> IngresosComparator = new Comparator<Familia>() {
         @Override
         public int compare(Familia t, Familia t1) {
@@ -101,6 +120,17 @@ public class Familia{
         }
     };
     
+    //Para comparar y ordenar las familias de acuerdo a sus ahorros
+    public static Comparator<Familia> AhorrosComparator = new Comparator<Familia>() {
+        @Override
+        public int compare(Familia t, Familia t1) {
+           int f1 = (int)(t.getTotalIngresos()-t.getTotalEgresos());
+	   int f2 = (int)(t1.getTotalIngresos()-t1.getTotalEgresos());
+	   return f2-f1;
+        }
+    };
+    
+    //calcula si la familia registra egresos en la semana dada
     public ArrayList egresosPorSemana(int semana){
         ArrayList<Egreso> semanales = new ArrayList<>();
         for(Egreso e: listaGastos){
@@ -111,6 +141,7 @@ public class Familia{
         return semanales;
     }
     
+    //calcula si la familia registra ingresos en la semana dada
     public ArrayList ingresosPorSemana(int semana){
         ArrayList<Ingreso> semanales = new ArrayList<>();
         for(Ingreso i: listaIngresos){
@@ -120,16 +151,6 @@ public class Familia{
         }
         return semanales;
     }
-
-    
-    public static Comparator<Familia> AhorrosComparator = new Comparator<Familia>() {
-        @Override
-        public int compare(Familia t, Familia t1) {
-           int f1 = (int)(t.getTotalIngresos()-t.getTotalEgresos());
-	   int f2 = (int)(t1.getTotalIngresos()-t1.getTotalEgresos());
-	   return f2-f1;
-        }
-    };
 
     public String getApellidosFamilia() {
         return apellidosFamilia;

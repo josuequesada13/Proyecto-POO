@@ -9,6 +9,10 @@ package proyecto_poo;
  *
  * @author josue
  */
+/*
+Clase para almacenar los datos de los egresos que tendran las personas y las
+familias.
+*/
 public class Egreso extends Transaccion{
     private String clasificacion;
 

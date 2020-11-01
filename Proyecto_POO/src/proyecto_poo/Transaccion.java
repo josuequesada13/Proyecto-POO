@@ -9,6 +9,9 @@ package proyecto_poo;
  *
  * @author josue
  */
+/*
+Clase transaccion utilizada como clase padre para las clases egreso e ingreso
+*/
 public class Transaccion {
     private double monto;
     private String descripcion;
