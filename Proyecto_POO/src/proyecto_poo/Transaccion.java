@@ -12,10 +12,12 @@ package proyecto_poo;
 public class Transaccion {
     private double monto;
     private String descripcion;
+    private int semana;
     
-    public Transaccion(double monto, String descripcion){
+    public Transaccion(double monto, String descripcion, int semana){
         this.monto = monto;
         this.descripcion = descripcion;
+        this.semana = semana;
     }
     
     public double getMonto() {
@@ -25,7 +27,8 @@ public class Transaccion {
     public String getDescripcion() {
         return descripcion;
     }
-    
-    
-        
+
+    public int getSemana() {
+        return semana;
+    }  
 }

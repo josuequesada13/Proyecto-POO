@@ -132,8 +132,8 @@ public class MetodoFamilia {
         }
         ClaseSocial[] array = {baja, bajaSup, media, mediaAlta, alta};
         for(ClaseSocial cs: array){
-            if((cs.getAhorros() - cs.getIngresos() * 100) > mayorPorcentaje){
-                mayorPorcentaje = (cs.getAhorros()-cs.getIngresos()*100);
+            if(((cs.getAhorros() / cs.getIngresos()) * 100) > mayorPorcentaje){
+                mayorPorcentaje = (cs.getAhorros() / cs.getIngresos()) * 100;
                 clase = cs.getNombre();
             }
         }
@@ -241,4 +241,5 @@ public class MetodoFamilia {
         }
         return sinAhorros;
     }
+    
 }

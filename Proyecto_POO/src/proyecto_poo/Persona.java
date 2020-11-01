@@ -42,21 +42,41 @@ public class Persona {
         
     }
     
-    public void anadirEgreso(String clasificacion, double monto, String descripcion){
-        Egreso nuevoEgreso = new Egreso(clasificacion, monto, descripcion);
+    public void anadirEgreso(String clasificacion, double monto, String descripcion, int semana){
+        Egreso nuevoEgreso = new Egreso(clasificacion, monto, descripcion, semana);
         this.egresos.add(nuevoEgreso);
         this.totalEgresos += monto;
         this.familia.anadeTotalEgresos(monto);
         this.familia.anadeEgresos(nuevoEgreso);
     }
     
-    public void anadirIngreso(double monto, String descripcion){
-        Ingreso nuevoIngreso = new Ingreso(monto, descripcion);
+    public void anadirIngreso(double monto, String descripcion, int semana){
+        Ingreso nuevoIngreso = new Ingreso(monto, descripcion, semana);
         this.ingresos.add(nuevoIngreso);
         this.totalIngresos += monto;
         this.familia.anadeTotalIngresos(monto);
         this.familia.anadeIngreso(nuevoIngreso);
         this.familia.calculaClase();
+    }
+    
+    public ArrayList egresosPorSemana(int semana){
+        ArrayList<Egreso> semanales = new ArrayList<>();
+        for(Egreso e: egresos){
+            if(e.getSemana() == semana){
+                semanales.add(e);
+            }
+        }
+        return semanales;
+    }
+    
+    public ArrayList ingresosPorSemana(int semana){
+        ArrayList<Ingreso> semanales = new ArrayList<>();
+        for(Ingreso i: ingresos){
+            if(i.getSemana() == semana){
+                semanales.add(i);
+            }
+        }
+        return semanales;
     }
 
     public String getNombre() {

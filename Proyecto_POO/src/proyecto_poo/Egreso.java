@@ -12,8 +12,8 @@ package proyecto_poo;
 public class Egreso extends Transaccion{
     private String clasificacion;
 
-    public Egreso(String clasificacion, double monto, String descripcion) {
-        super(monto, descripcion);
+    public Egreso(String clasificacion, double monto, String descripcion, int semana) {
+        super(monto, descripcion, semana);
         this.clasificacion = clasificacion;
     }
     

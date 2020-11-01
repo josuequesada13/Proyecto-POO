@@ -14,8 +14,8 @@ import java.util.Date;
  */
 public class Ingreso extends Transaccion{
 
-    public Ingreso(double monto, String descripcion) {
-        super(monto, descripcion);
+    public Ingreso(double monto, String descripcion, int semana) {
+        super(monto, descripcion, semana);
         
     }
 }

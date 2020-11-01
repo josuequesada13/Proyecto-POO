@@ -101,6 +101,27 @@ public class Familia{
         }
     };
     
+    public ArrayList egresosPorSemana(int semana){
+        ArrayList<Egreso> semanales = new ArrayList<>();
+        for(Egreso e: listaGastos){
+            if(e.getSemana() == semana){
+                semanales.add(e);
+            }
+        }
+        return semanales;
+    }
+    
+    public ArrayList ingresosPorSemana(int semana){
+        ArrayList<Ingreso> semanales = new ArrayList<>();
+        for(Ingreso i: listaIngresos){
+            if(i.getSemana() == semana){
+                semanales.add(i);
+            }
+        }
+        return semanales;
+    }
+
+    
     public static Comparator<Familia> AhorrosComparator = new Comparator<Familia>() {
         @Override
         public int compare(Familia t, Familia t1) {

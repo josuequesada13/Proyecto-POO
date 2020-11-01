@@ -12,6 +12,7 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.ListModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -44,6 +45,8 @@ public class Inicio extends javax.swing.JFrame {
                 jTextInfoFam.setText("");
             }
         });
+        ((DefaultEditor) jSpinSemana.getEditor()).getTextField().setEditable(false);
+        ((DefaultEditor) jSpinnerSemana.getEditor()).getTextField().setEditable(false);
     }
 
     /**
@@ -117,6 +120,17 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         jTextTransacciones = new javax.swing.JTextArea();
         btnEgresos = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jSpinSemana = new javax.swing.JSpinner();
+        jPanel6 = new javax.swing.JPanel();
+        jCombofamiliares = new javax.swing.JComboBox<>();
+        Familiar = new javax.swing.JLabel();
+        jSpinnerSemana = new javax.swing.JSpinner();
+        Familiar1 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTextSemana = new javax.swing.JTextArea();
+        btnIngresosSemana = new javax.swing.JButton();
+        btnEgresosSemana = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
@@ -316,7 +330,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrearUsuario)
                     .addComponent(btnNuevoTrabajo))
@@ -405,7 +419,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         tabInfo.addTab("Reportes", jPanel4);
@@ -459,7 +473,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnFamiliasSinAhorro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -532,32 +546,39 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel9.setText("Semana:");
+
+        jSpinSemana.setModel(new javax.swing.SpinnerNumberModel(1, 1, 53, 1));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextMonto)
                             .addComponent(btnAnadirTransaccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                             .addComponent(jComboTipoTrans, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboTransaccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextMonto)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel6))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jSpinSemana, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel8))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jTextDescripcion))
-                        .addGap(48, 48, 48))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(48, 48, 48)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboElegirFam, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -588,6 +609,10 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addComponent(jComboTipoTrans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSpinSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -603,10 +628,79 @@ public class Inicio extends javax.swing.JFrame {
                             .addComponent(btnEgresos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane7)))
-                .addGap(20, 28, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         tabInfo.addTab("Transaccion", jPanel2);
+
+        Familiar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        Familiar.setText("Familiar:");
+
+        jSpinnerSemana.setModel(new javax.swing.SpinnerNumberModel(1, 1, 53, 1));
+
+        Familiar1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        Familiar1.setText("Semana:");
+
+        jTextSemana.setColumns(20);
+        jTextSemana.setRows(5);
+        jScrollPane8.setViewportView(jTextSemana);
+
+        btnIngresosSemana.setText("Ingresos");
+        btnIngresosSemana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresosSemanaActionPerformed(evt);
+            }
+        });
+
+        btnEgresosSemana.setText("Egresos");
+        btnEgresosSemana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEgresosSemanaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnIngresosSemana)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEgresosSemana))
+                    .addComponent(Familiar)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jCombofamiliares, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Familiar1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSpinnerSemana, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(Familiar, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCombofamiliares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Familiar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSpinnerSemana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnIngresosSemana)
+                            .addComponent(btnEgresosSemana)))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+
+        tabInfo.addTab("Info Semanal", jPanel6);
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -646,8 +740,8 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(btnSalir))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(tabInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(tabInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -701,19 +795,33 @@ public class Inicio extends javax.swing.JFrame {
             jComboElegirFam.setEnabled(true);
             String[] miembros = new String[familiaActual.getMiembrosFamilia().size()]; 
             for(int i = 0; i < familiaActual.getMiembrosFamilia().size(); i++){
-            miembros[i] = familiaActual.getMiembrosFamilia().get(i).getNombre();
+                miembros[i] = familiaActual.getMiembrosFamilia().get(i).getNombre();
             }
             DefaultComboBoxModel model = new DefaultComboBoxModel(miembros);
             jComboElegirFam.setModel(model);
         }  
     }
     
+    
+    public void setMiembrosSemanales(){
+        if(familiaActual.getMiembrosFamilia() == null){
+            jCombofamiliares.setEnabled(false);
+        }else{
+            jCombofamiliares.setEnabled(true);
+            String[] miembros = new String[familiaActual.getMiembrosFamilia().size()]; 
+            for(int i = 0; i < familiaActual.getMiembrosFamilia().size(); i++){
+                miembros[i] = familiaActual.getMiembrosFamilia().get(i).getNombre();
+            }
+            DefaultComboBoxModel model = new DefaultComboBoxModel(miembros);
+            jCombofamiliares.setModel(model);
+        }  
+    }
     private void btnAnadirTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirTransaccionActionPerformed
         String usuario = (String)jComboElegirFam.getSelectedItem();
         if(usuario != null){
             Persona persona =  familiaActual.buscarPersona(usuario);
             if(jComboTransaccion.getSelectedItem().toString().equals("Ingreso")){
-                persona.anadirIngreso(Integer.parseInt(jTextMonto.getText()), jTextDescripcion.getText());
+                persona.anadirIngreso(Integer.parseInt(jTextMonto.getText()), jTextDescripcion.getText(), (int)jSpinSemana.getValue());
                 System.out.println("Anadio un ingreso a " + usuario + " con un monto de " + jTextMonto.getText());
                 jTextMonto.setText("");
                 jTextDescripcion.setText("");
@@ -723,7 +831,7 @@ public class Inicio extends javax.swing.JFrame {
                 }
                     
                 persona.anadirEgreso((String)jComboTipoTrans.getSelectedItem(), 
-                        Integer.parseInt(jTextMonto.getText()), jTextDescripcion.getText());
+                        Integer.parseInt(jTextMonto.getText()), jTextDescripcion.getText(), (int)jSpinSemana.getValue());
                 System.out.println("Anadio un egreso a " + usuario + " con un monto de " + jTextMonto.getText());
                 jTextMonto.setText("");
                 jTextDescripcion.setText("");
@@ -747,7 +855,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextMontoKeyTyped
 
     private void jComboElegirFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboElegirFamActionPerformed
-        String usuario = (String)jComboElegirFam.getSelectedItem();
+        /*String usuario = (String)jComboElegirFam.getSelectedItem();
         Persona persona = familiaActual.buscarPersona(usuario);
         String[] ingresos = new String[persona.getIngresos().size()+1];
         //ingresos[1] = "Ingresos:";
@@ -756,7 +864,7 @@ public class Inicio extends javax.swing.JFrame {
             ingresos[i] = ing.getDescripcion() + " - " + ing.getMonto();
                     //familiaActual.getMiembrosFamilia().get(i).getNombre();
             jTextTransacciones.append(ing.getDescripcion() + " - " + ing.getMonto() + "\n");
-            }
+            }*/
         
        
     }//GEN-LAST:event_jComboElegirFamActionPerformed
@@ -951,6 +1059,46 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboTipoTransActionPerformed
 
+    private void btnIngresosSemanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresosSemanaActionPerformed
+       String usuario = (String)jCombofamiliares.getSelectedItem();
+       jTextSemana.setText("");
+       if(usuario != null){
+            Persona persona =  familiaActual.buscarPersona(usuario);
+            ArrayList<Ingreso> ingSemana = persona.ingresosPorSemana((int)jSpinnerSemana.getValue());
+            if(ingSemana.isEmpty()){
+                jTextSemana.setText("Esta persona no posee ingresos\nen esa semana.");
+            }else{
+                jTextSemana.append("Ingresos:\tMonto: \n");
+                for(Ingreso i: ingSemana){
+                    jTextSemana.append(i.getDescripcion()+ "\t" + i.getMonto() +"\n");
+                }
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No hay usuarios disponibles.");
+        }
+    }//GEN-LAST:event_btnIngresosSemanaActionPerformed
+
+    private void btnEgresosSemanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEgresosSemanaActionPerformed
+       String usuario = (String)jCombofamiliares.getSelectedItem();
+       jTextSemana.setText("");
+       if(usuario != null){
+            Persona persona =  familiaActual.buscarPersona(usuario);
+            ArrayList<Egreso> engSemana = persona.egresosPorSemana((int)jSpinnerSemana.getValue());
+            if(engSemana.isEmpty()){
+                jTextSemana.setText("Esta persona no posee egresos\nen esa semana.");
+            }else{
+                jTextSemana.append("Ingresos:\tMonto: \n");
+                for(Egreso e: engSemana){
+                    jTextSemana.append(e.getDescripcion()+ "\t" + e.getMonto() +"\n");
+                }
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No hay usuarios disponibles.");
+        }
+    }//GEN-LAST:event_btnEgresosSemanaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -988,6 +1136,8 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Familiar;
+    private javax.swing.JLabel Familiar1;
     private javax.swing.JButton btnAhorros;
     private javax.swing.JButton btnAhorrosFam;
     private javax.swing.JButton btnAnadirTransaccion;
@@ -996,6 +1146,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JButton btnEgresos;
     private javax.swing.JButton btnEgresosFam;
+    private javax.swing.JButton btnEgresosSemana;
     private javax.swing.JButton btnEscolarAhorro;
     private javax.swing.JButton btnFamiliasAhorro;
     private javax.swing.JButton btnFamiliasIngreso;
@@ -1003,6 +1154,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnGastosBasicos;
     private javax.swing.JButton btnIngresos;
     private javax.swing.JButton btnIngresosFam;
+    private javax.swing.JButton btnIngresosSemana;
     private javax.swing.JButton btnMiembros;
     private javax.swing.JButton btnNuevoTrabajo;
     private javax.swing.JButton btnPorcentajes;
@@ -1021,6 +1173,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboElegirFam;
     private javax.swing.JComboBox<String> jComboTipoTrans;
     private javax.swing.JComboBox<String> jComboTransaccion;
+    private javax.swing.JComboBox<String> jCombofamiliares;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1029,6 +1182,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jListados;
@@ -1037,6 +1191,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1044,11 +1199,15 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JSpinner jSpinSemana;
+    private javax.swing.JSpinner jSpinnerSemana;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextDescripcion;
     private javax.swing.JTextArea jTextInfoFam;
     private javax.swing.JTextField jTextMonto;
     private javax.swing.JTextArea jTextReportes;
+    private javax.swing.JTextArea jTextSemana;
     private javax.swing.JTextArea jTextTransacciones;
     private javax.swing.JTabbedPane tabInfo;
     // End of variables declaration//GEN-END:variables

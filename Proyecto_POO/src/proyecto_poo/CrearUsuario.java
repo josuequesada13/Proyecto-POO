@@ -219,6 +219,7 @@ public class CrearUsuario extends javax.swing.JFrame {
             trabajoPersona.getText(), jComboGenero.getSelectedItem().toString(), 
                     jComboGradoEsco.getSelectedItem().toString());
             inicio.familiaActual.anadeFamiliar(p);
+            p.setFamilia(inicio.familiaActual);
             System.out.println(nombrePersona.getText());
             nombrePersona.setText("");   
             idPersona.setText("");
@@ -226,6 +227,7 @@ public class CrearUsuario extends javax.swing.JFrame {
             trabajoPersona.setText("");
             this.setVisible(false);
             inicio.setMiembros();
+            inicio.setMiembrosSemanales();
             inicio.setVisible(true);
         }   
     }//GEN-LAST:event_btnCrearFamActionPerformed
